@@ -1,0 +1,32 @@
+<html>
+<head></head>
+<body>
+    {% if not isUpdate: %}
+    <a href="?u=1">수정페이지 이동</a>
+    {% endif %}
+    <form method='post'>
+        <fieldset>
+            <caption>{{ oilStore['name'] }}의 상세 정보</caption>
+            <table border='1' cellspacing='0'>
+                {# items() 함수는 튜플형태로 (키,값) 한덩어리씩 빼준다 #}
+                {% for key, value in oilStore.items(): %}
+                    {% if key!='id': %}
+                        <tr>
+                            <td>{{ key }}</td>
+                            {% if key!='gas': %}
+                                <td>{{ value }}</td>
+                            {% else: %}
+                                {# disabled 존재 여부로 처리 하겟다 #}
+                                <td><input {{ '' if isUpdate else 'disabled' }} type='number' value='{{ value }}' name='{{ key }}'></td>
+                            {% endif %}
+                        </tr>
+                    {% endif %}
+                {% endfor %}        
+            </table>
+            {% if isUpdate: %}
+                <input type='submit' value='수정'/>
+            {% endif %}
+        </fieldset>
+    </form>
+</body>
+</html>

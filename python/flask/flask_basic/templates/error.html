@@ -1,0 +1,9 @@
+<script>
+    alert("{{errMsg}}");
+    // 특정 url 로 이동
+    {% if dst: %}
+        document.location.href='{{dst}}'
+    {% else: %}
+        history.back();
+    {% endif %}
+</script>

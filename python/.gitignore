@@ -1,0 +1,12 @@
+__pycache__/
+logs/
+.vscode/
+tmp/
+practice/
+*.csv
+*.xlsx
+*.ipynb
+.pkl
+.empty
+.DS_Store
+

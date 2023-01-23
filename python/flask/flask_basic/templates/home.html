@@ -1,0 +1,57 @@
+<html>
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src='/static/main.js'></script>
+</head>
+<body>
+    <div>
+        <div>
+            <h3>주유소 검색</h3>
+            <fieldset>
+                <form>
+                    <input type-'text' name='keyword' placeholder="검색할 주유소"/>
+                    <button>검색</button>
+                </form>
+                <div id='result'>
+                    <p>검색어 : <b></b></p>
+                    <ul>
+                        <li></li>
+                    </ul>
+
+                </div>
+            </fieldset>
+        </div>
+        <div>
+            <h3>주유소 리스트</h3>
+            <!-- 주유소 정보를 반복하여 출력한다 -->
+            {# 개발자간의 주석 정보(사용자는 못보게) #}
+            <table border='1' cellspacing='0'>
+                <thead>
+                    <tr>
+                        <th>일련번호</th>
+                        <th>주유소 이름</th>
+                        <th>주소</th>
+                        <th>브랜드</th>
+                        <th>휘발유</th>
+                        <th>고급휘발유</th>
+                        <th>경유</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for oil in oils: %}
+                        <tr>
+                            <td>{{oil['id']}}</td>
+                            <td>{{oil['name']}}</td>
+                            <td>{{oil['addr']}}</td>
+                            <td>{{oil['brand']}}</td>
+                            <td>{{oil['gas']}}</td>
+                            <td>{{oil['gas_p']}}</td>
+                            <td>{{oil['gas_l']}}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

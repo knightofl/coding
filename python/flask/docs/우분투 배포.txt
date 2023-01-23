@@ -1,0 +1,155 @@
+1. 우분투 16 또는 18 배포 기본세팅
+> sudo apt-get update
+> sudo apt-get upgrade
+
+2. 프로그램 설치
+> sudo apt-get install python3-pip python3-dev nginx
+
+3. 가상환경 구축
+> sudo pip3 install virtualenv
+
+4. 프로젝트 폴더 구성
+> mkdir flaskapp && cd flaskapp
+> virtualenv -p python3 flaskappenv
+
+5. 가상환경 활성화
+> source flaskappenv/bin/activate
+
+6. 플라스크 설정
+> pip3 install flask uwsgi
+
+7. 간단한 플라스크 앱 생성
+> vi flaskapp.py
+
+from flask import Flask
+
+app = Flask(__name__)
+
+@app.route('/')
+def home():
+    return '<h2>Hello Flask</h2>'
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0')
+
+8. 서버가동
+> python3 flaskapp.py
+
+9. 구동후 시큐리티 그릅 인바운드 추가 (5000, 80(http))
+=> 터미널 세션을 물고 있어서 창을 닫으면 그대로 종료
+=> 백그라운드에서 서비스가 구동되게 처리해야 됨
+=> uwsgi 를 사용하여 재구성
+=> uwsgi 를 entry point 로 구성
+
+> vi wsgi.py
+
+# 서버가 구동되는 메인모듈을 가져와서
+# 엔트리 포인트에서 서버 가동시킨다
+
+from flaskapp import app
+
+if __name__ == '__main__':
+    app.run()
+
+10. uwsgi 를 entry point 로 실행
+> uwsgi --socket 0.0.0.0:5000 --protocol=http -w wsgi:app
+
+11. 서비스 운영에 필요한 설정파일 구성
+가상환경 빠져나오기
+> deactivate
+> vi flaskapp.ini
+
+[uwsgi]
+module = wsgi:app
+
+master = true
+processes = 5
+
+socket = flaskapp.sock
+chmod-socket = 660
+vacuum = true
+
+die-on-term = true
+
+
+12. system 파일 생성
+서버 재가동시 자동으로 uwsgi, flaskapp 시동
+> sudo vi /etc/systemd/system/flaskapp.service
+
+[Unit]
+Description = uwsgi service flaskapp
+After = network.target
+
+[Service]
+User = ubuntu
+Group = www-data
+WorkingDirectory = /home/ubuntu/flaskapp
+Environment = "PATH=/home/ubuntu/flaskapp/flaskappenv/bin"
+ExecStart = /home/ubuntu/flaskapp/flaskappenv/bin/uwsgi --ini flaskapp.ini
+
+[Install]
+WantedBy = multi-user.target
+
+
+13. 서비스 파일 시작 및 활성화
+> sudo systemctl start flaskapp
+> sudo systemvtl enable flaskapp
+
+14. nginx 연동 설정, proxy 요청 처리
+> sudo vi /etc/nginx/sites-available/flaskapp
+
+server {
+        listen 80;
+        server_name 54.180.81.26;
+
+        location / {
+                include uwsgi_params;
+                uwsgi_pass unix:///home/ubuntu/flaskapp/flaskapp.sock;
+        }
+}
+
+
+15. 남은 작업
+링크 설정
+> sudo ln -s /etc/nginx/sites-available/flaskapp /etc/nginx/sites-enabled
+
+문법 체크
+> sudo nginx -t
+
+nginx 재가동
+> sudo systemctl restart nginx
+
+nginx server 접속허용
+> sudo ufw allow 'Nginx Full'
+
+코드 수정후 재시작법
+> sudo systemctl restart flaskapp
+
+로그 보기
+> tail -f /var/log/nginx/access.log
+
+서비스 상태 보기
+> sudo systemctl status flaskapp
+
+
+16. 진입로 설정
+> vi wsgi.py
+
+# 서버가 구동되는 메인모듈을 가져와서
+# 엔트리 포인트에서 서버 가동시킨다
+
+#from flaskapp import app
+from test.f12 import app
+
+if __name__ == '__main__':
+    app.run()
+
+> sudo systemctl restart flaskapp
+
+
+17. 내가 개발한 서비스툴 배포
+ftp 툴을 이용하여 엔트로 포인트 이하로 패키지를 ㄱ성
+해당 패키지 밑으로 업로드
+개발시 사용한 모듈설치 (서비스별로 가상환경을 별도도 구성)
+> source flaskappenv/bin/activate
+> pip install -r ./test/requirement.txt
