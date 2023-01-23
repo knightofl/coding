@@ -1,0 +1,19 @@
+
+	Inject
+
+	hKernel32 = GetModuleHandle("kernel32.dll");
+	
+	hProcess = OpenProcess(PROCESS_ALL_ACCESS, FALSE, dwPid);
+	
+	pLibRemote = VirtualAllocEx(hProcess, NULL, nLen, MEM_COMMIT, PAGE_EXECUTE_READWRITE);
+		
+	WriteProcessMemory(hProcess, pLibRemote, (void*)szDllPath, nLen, NULL);
+
+	pThreadProc = (LPTHREAD_START_ROUTINE) GetProcAddress(hKernel32, "LoadLibraryA");
+
+	hThread = CreateRemoteThread(hProcess, NULL, 0, pThreadProc, pLibRemote, 0, NULL);
+
+	CloseHandle(hProcess);
+	CloseHandle(hThread);
+
+	

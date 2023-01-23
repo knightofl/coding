@@ -1,0 +1,44 @@
+
+
+	Eject
+
+	참고 : http://msdn.microsoft.com/en-us/library/ms686849(v=VS.85).aspx	
+
+	HANDLE hModuleSnap = INVALID_HANDLE_VALUE; 
+	MODULEENTRY32 me32; 
+ 
+	//  Take a snapshot of all modules in the specified process. 
+	hModuleSnap = CreateToolhelp32Snapshot( TH32CS_SNAPMODULE, dwPid ); 
+      
+ 	//  Set the size of the structure before using it. 
+	me32.dwSize = sizeof( MODULEENTRY32 ); 
+ 
+	//  Retrieve information about the first module, 
+	//  and exit if unsuccessful 
+            if( !Module32First( hModuleSnap, &me32 ) ) 
+  	{	 
+	    CloseHandle( hModuleSnap );     // Must clean up the snapshot object! 
+	    exit(0);
+	} 
+ 
+         do 
+          { 
+	// me32.szModule(모듈의 이름)이나 me32.szExePath(모듈경로)과 
+    	// 여러분이 입력한 DLL PATH나 NAME 을 비교해서 같다면 반복문을 멈춤 
+	// 그렇게 하면 me32는 찾아낸 모듈(dll)의 정보를 가짐. 
+ 
+          } while( Module32Next( hModuleSnap, &me32 ) ); 
+	
+	hProcess = OpenProcess(PROCESS_ALL_ACCESS, FALSE, dwPid);
+
+	hKernel32 = GetModuleHandle("kernel32.dll");
+	
+	pThreadProc = (LPTHREAD_START_ROUTINE)  GetProcAddress(hKernel32, "FreeLibrary");
+	
+	hThread = CreateRemoteThread(hProcess, NULL, 0, pThreadProc, me32.modBaseAddr, 0, NULL);
+  
+          	//  Do not forget to clean up the snapshot object. 
+	CloseHandle( hModuleSnap ); 
+	
+
+	
