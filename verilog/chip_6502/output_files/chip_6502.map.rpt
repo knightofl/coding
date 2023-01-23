@@ -1,0 +1,1665 @@
+Analysis & Synthesis report for chip_6502
+Sat Dec 17 18:07:39 2022
+Quartus Prime Version 22.1std.0 Build 915 10/25/2022 SC Lite Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. Registers Removed During Synthesis
+  9. General Register Statistics
+ 10. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 11. Parameter Settings for User Entity Instance: LOGIC:logic_00|MUX:mux_sb_1287
+ 12. Parameter Settings for User Entity Instance: LOGIC:logic_00|MUX:mux_idb_1473
+ 13. Parameter Settings for User Entity Instance: LOGIC:logic_00|MUX:mux_adl_1242
+ 14. Parameter Settings for User Entity Instance: LOGIC:logic_00|MUX:mux_adh_1651
+ 15. Parameter Settings for User Entity Instance: LOGIC:logic_00|MUX:mux_pcl_655
+ 16. Parameter Settings for User Entity Instance: LOGIC:logic_00|MUX:mux_pch_502
+ 17. Parameter Settings for User Entity Instance: LOGIC:logic_00|MUX:mux_sb_54
+ 18. Parameter Settings for User Entity Instance: LOGIC:logic_00|MUX:mux_idb_1108
+ 19. Parameter Settings for User Entity Instance: LOGIC:logic_00|MUX:mux_adl_413
+ 20. Parameter Settings for User Entity Instance: LOGIC:logic_00|MUX:mux_adh_407
+ 21. Parameter Settings for User Entity Instance: LOGIC:logic_00|MUX:mux_pcl_1139
+ 22. Parameter Settings for User Entity Instance: LOGIC:logic_00|MUX:mux_pch_1670
+ 23. Parameter Settings for User Entity Instance: LOGIC:logic_00|MUX:mux_sb_1150
+ 24. Parameter Settings for User Entity Instance: LOGIC:logic_00|MUX:mux_idb_991
+ 25. Parameter Settings for User Entity Instance: LOGIC:logic_00|MUX:mux_adl_1282
+ 26. Parameter Settings for User Entity Instance: LOGIC:logic_00|MUX:mux_adh_52
+ 27. Parameter Settings for User Entity Instance: LOGIC:logic_00|MUX:mux_pcl_1022
+ 28. Parameter Settings for User Entity Instance: LOGIC:logic_00|MUX:mux_pch_292
+ 29. Parameter Settings for User Entity Instance: LOGIC:logic_00|MUX:mux_sb_1188
+ 30. Parameter Settings for User Entity Instance: LOGIC:logic_00|MUX:mux_idb_1302
+ 31. Parameter Settings for User Entity Instance: LOGIC:logic_00|MUX:mux_adl_684
+ 32. Parameter Settings for User Entity Instance: LOGIC:logic_00|MUX:mux_adh_315
+ 33. Parameter Settings for User Entity Instance: LOGIC:logic_00|MUX:mux_pcl_1359
+ 34. Parameter Settings for User Entity Instance: LOGIC:logic_00|MUX:mux_pch_584
+ 35. Parameter Settings for User Entity Instance: LOGIC:logic_00|MUX:mux_sb_1405
+ 36. Parameter Settings for User Entity Instance: LOGIC:logic_00|MUX:mux_idb_892
+ 37. Parameter Settings for User Entity Instance: LOGIC:logic_00|MUX:mux_adl_1437
+ 38. Parameter Settings for User Entity Instance: LOGIC:logic_00|MUX:mux_adh_1160
+ 39. Parameter Settings for User Entity Instance: LOGIC:logic_00|MUX:mux_pcl_900
+ 40. Parameter Settings for User Entity Instance: LOGIC:logic_00|MUX:mux_pch_948
+ 41. Parameter Settings for User Entity Instance: LOGIC:logic_00|MUX:mux_sb_166
+ 42. Parameter Settings for User Entity Instance: LOGIC:logic_00|MUX:mux_idb_1503
+ 43. Parameter Settings for User Entity Instance: LOGIC:logic_00|MUX:mux_adl_1630
+ 44. Parameter Settings for User Entity Instance: LOGIC:logic_00|MUX:mux_adh_483
+ 45. Parameter Settings for User Entity Instance: LOGIC:logic_00|MUX:mux_pcl_622
+ 46. Parameter Settings for User Entity Instance: LOGIC:logic_00|MUX:mux_pch_49
+ 47. Parameter Settings for User Entity Instance: LOGIC:logic_00|MUX:mux_sb_1336
+ 48. Parameter Settings for User Entity Instance: LOGIC:logic_00|MUX:mux_idb_833
+ 49. Parameter Settings for User Entity Instance: LOGIC:logic_00|MUX:mux_adl_121
+ 50. Parameter Settings for User Entity Instance: LOGIC:logic_00|MUX:mux_adh_13
+ 51. Parameter Settings for User Entity Instance: LOGIC:logic_00|MUX:mux_pcl_377
+ 52. Parameter Settings for User Entity Instance: LOGIC:logic_00|MUX:mux_pch_1551
+ 53. Parameter Settings for User Entity Instance: LOGIC:logic_00|MUX:mux_sb_1001
+ 54. Parameter Settings for User Entity Instance: LOGIC:logic_00|MUX:mux_idb_493
+ 55. Parameter Settings for User Entity Instance: LOGIC:logic_00|MUX:mux_adl_1299
+ 56. Parameter Settings for User Entity Instance: LOGIC:logic_00|MUX:mux_adh_1539
+ 57. Parameter Settings for User Entity Instance: LOGIC:logic_00|MUX:mux_pcl_1611
+ 58. Parameter Settings for User Entity Instance: LOGIC:logic_00|MUX:mux_pch_205
+ 59. Parameter Settings for User Entity Instance: LOGIC:logic_00|MUX:mux_alu_out_68
+ 60. Parameter Settings for User Entity Instance: LOGIC:logic_00|MUX:mux_alu_out_276
+ 61. Parameter Settings for User Entity Instance: LOGIC:logic_00|MUX:mux_alu_out_495
+ 62. Parameter Settings for User Entity Instance: LOGIC:logic_00|MUX:mux_alu_out_893
+ 63. Parameter Settings for User Entity Instance: LOGIC:logic_00|MUX:mux_alu_out_394
+ 64. Parameter Settings for User Entity Instance: LOGIC:logic_00|MUX:mux_alu_out_697
+ 65. Parameter Settings for User Entity Instance: LOGIC:logic_00|MUX:mux_alu_out_1490
+ 66. Parameter Settings for User Entity Instance: LOGIC:logic_00|MUX:mux_alu_out_1123
+ 67. Parameter Settings for User Entity Instance: LOGIC:logic_00|MUX:mux_alua_1627
+ 68. Parameter Settings for User Entity Instance: LOGIC:logic_00|MUX:mux_alub_235
+ 69. Parameter Settings for User Entity Instance: LOGIC:logic_00|MUX:mux_alua_1522
+ 70. Parameter Settings for User Entity Instance: LOGIC:logic_00|MUX:mux_alub_1535
+ 71. Parameter Settings for User Entity Instance: LOGIC:logic_00|MUX:mux_alua_1332
+ 72. Parameter Settings for User Entity Instance: LOGIC:logic_00|MUX:mux_alub_704
+ 73. Parameter Settings for User Entity Instance: LOGIC:logic_00|MUX:mux_alua_1142
+ 74. Parameter Settings for User Entity Instance: LOGIC:logic_00|MUX:mux_alub_1645
+ 75. Parameter Settings for User Entity Instance: LOGIC:logic_00|MUX:mux_alua_1248
+ 76. Parameter Settings for User Entity Instance: LOGIC:logic_00|MUX:mux_alub_1432
+ 77. Parameter Settings for User Entity Instance: LOGIC:logic_00|MUX:mux_alua_1167
+ 78. Parameter Settings for User Entity Instance: LOGIC:logic_00|MUX:mux_alub_977
+ 79. Parameter Settings for User Entity Instance: LOGIC:logic_00|MUX:mux_alua_530
+ 80. Parameter Settings for User Entity Instance: LOGIC:logic_00|MUX:mux_alub_1678
+ 81. Parameter Settings for User Entity Instance: LOGIC:logic_00|MUX:mux_alua_1680
+ 82. Parameter Settings for User Entity Instance: LOGIC:logic_00|MUX:mux_alub_96
+ 83. Port Connectivity Checks: "LOGIC:logic_00"
+ 84. Post-Synthesis Netlist Statistics for Top Partition
+ 85. Elapsed Time Per Partition
+ 86. Analysis & Synthesis Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2022  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and any partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel FPGA IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Intel and sold by Intel or its authorized distributors.  Please
+refer to the applicable agreement for further details, at
+https://fpgasoftware.intel.com/eula.
+
+
+
++----------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                     ;
++---------------------------------+------------------------------------------------+
+; Analysis & Synthesis Status     ; Successful - Sat Dec 17 18:07:39 2022          ;
+; Quartus Prime Version           ; 22.1std.0 Build 915 10/25/2022 SC Lite Edition ;
+; Revision Name                   ; chip_6502                                      ;
+; Top-level Entity Name           ; chip_6502                                      ;
+; Family                          ; Cyclone V                                      ;
+; Logic utilization (in ALMs)     ; N/A                                            ;
+; Total registers                 ; 768                                            ;
+; Total pins                      ; 41                                             ;
+; Total virtual pins              ; 0                                              ;
+; Total block memory bits         ; 0                                              ;
+; Total DSP Blocks                ; 0                                              ;
+; Total HSSI RX PCSs              ; 0                                              ;
+; Total HSSI PMA RX Deserializers ; 0                                              ;
+; Total HSSI TX PCSs              ; 0                                              ;
+; Total HSSI PMA TX Serializers   ; 0                                              ;
+; Total PLLs                      ; 0                                              ;
+; Total DLLs                      ; 0                                              ;
++---------------------------------+------------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                                             ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                                          ; Setting            ; Default Value      ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+; Device                                                                          ; 5CSEBA6U23I7       ;                    ;
+; Top-level entity name                                                           ; chip_6502          ; chip_6502          ;
+; Family name                                                                     ; Cyclone V          ; Cyclone V          ;
+; Use smart compilation                                                           ; Off                ; Off                ;
+; Enable parallel Assembler and Timing Analyzer during compilation                ; On                 ; On                 ;
+; Enable compact report table                                                     ; Off                ; Off                ;
+; Restructure Multiplexers                                                        ; Auto               ; Auto               ;
+; MLAB Add Timing Constraints For Mixed-Port Feed-Through Mode Setting Don't Care ; Off                ; Off                ;
+; Create Debugging Nodes for IP Cores                                             ; Off                ; Off                ;
+; Preserve fewer node names                                                       ; On                 ; On                 ;
+; Intel FPGA IP Evaluation Mode                                                   ; Enable             ; Enable             ;
+; Verilog Version                                                                 ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                                    ; VHDL_1993          ; VHDL_1993          ;
+; State Machine Processing                                                        ; Auto               ; Auto               ;
+; Safe State Machine                                                              ; Off                ; Off                ;
+; Extract Verilog State Machines                                                  ; On                 ; On                 ;
+; Extract VHDL State Machines                                                     ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                               ; Off                ; Off                ;
+; Iteration limit for constant Verilog loops                                      ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                                  ; 250                ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                                         ; On                 ; On                 ;
+; Infer RAMs from Raw Logic                                                       ; On                 ; On                 ;
+; Parallel Synthesis                                                              ; On                 ; On                 ;
+; DSP Block Balancing                                                             ; Auto               ; Auto               ;
+; NOT Gate Push-Back                                                              ; On                 ; On                 ;
+; Power-Up Don't Care                                                             ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                                    ; Off                ; Off                ;
+; Remove Duplicate Registers                                                      ; On                 ; On                 ;
+; Ignore CARRY Buffers                                                            ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                                          ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                                           ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                                       ; Off                ; Off                ;
+; Ignore LCELL Buffers                                                            ; Off                ; Off                ;
+; Ignore SOFT Buffers                                                             ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                                  ; Off                ; Off                ;
+; Optimization Technique                                                          ; Balanced           ; Balanced           ;
+; Carry Chain Length                                                              ; 70                 ; 70                 ;
+; Auto Carry Chains                                                               ; On                 ; On                 ;
+; Auto Open-Drain Pins                                                            ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                                           ; Off                ; Off                ;
+; Auto ROM Replacement                                                            ; On                 ; On                 ;
+; Auto RAM Replacement                                                            ; On                 ; On                 ;
+; Auto DSP Block Replacement                                                      ; On                 ; On                 ;
+; Auto Shift Register Replacement                                                 ; Auto               ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                                 ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                                   ; On                 ; On                 ;
+; Strict RAM Replacement                                                          ; Off                ; Off                ;
+; Allow Synchronous Control Signals                                               ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                                          ; Off                ; Off                ;
+; Auto Resource Sharing                                                           ; Off                ; Off                ;
+; Allow Any RAM Size For Recognition                                              ; Off                ; Off                ;
+; Allow Any ROM Size For Recognition                                              ; Off                ; Off                ;
+; Allow Any Shift Register Size For Recognition                                   ; Off                ; Off                ;
+; Use LogicLock Constraints during Resource Balancing                             ; On                 ; On                 ;
+; Ignore translate_off and synthesis_off directives                               ; Off                ; Off                ;
+; Timing-Driven Synthesis                                                         ; On                 ; On                 ;
+; Report Parameter Settings                                                       ; On                 ; On                 ;
+; Report Source Assignments                                                       ; On                 ; On                 ;
+; Report Connectivity Checks                                                      ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                                              ; Off                ; Off                ;
+; Synchronization Register Chain Length                                           ; 3                  ; 3                  ;
+; Power Optimization During Synthesis                                             ; Normal compilation ; Normal compilation ;
+; HDL message level                                                               ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                                 ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report                        ; 5000               ; 5000               ;
+; Number of Swept Nodes Reported in Synthesis Report                              ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report                       ; 100                ; 100                ;
+; Clock MUX Protection                                                            ; On                 ; On                 ;
+; Auto Gated Clock Conversion                                                     ; Off                ; Off                ;
+; Block Design Naming                                                             ; Auto               ; Auto               ;
+; SDC constraint protection                                                       ; Off                ; Off                ;
+; Synthesis Effort                                                                ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal                    ; On                 ; On                 ;
+; Pre-Mapping Resynthesis Optimization                                            ; Off                ; Off                ;
+; Analysis & Synthesis Message Level                                              ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                                     ; Auto               ; Auto               ;
+; Resource Aware Inference For Block RAM                                          ; On                 ; On                 ;
+; Automatic Parallel Synthesis                                                    ; On                 ; On                 ;
+; Partial Reconfiguration Bitstream ID                                            ; Off                ; Off                ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+
+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 3           ;
+; Maximum allowed            ; 3           ;
+;                            ;             ;
+; Average used               ; 1.00        ;
+; Maximum used               ; 3           ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
+;     Processor 2            ;   0.0%      ;
+;     Processor 3            ;   0.0%      ;
++----------------------------+-------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                      ;
++----------------------------------+-----------------+------------------------+---------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type              ; File Name with Absolute Path                                        ; Library ;
++----------------------------------+-----------------+------------------------+---------------------------------------------------------------------+---------+
+; chip_6502.v                      ; yes             ; User Verilog HDL File  ; /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v         ;         ;
+; chip_6502_nodes.inc              ; yes             ; User Unspecified File  ; /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502_nodes.inc ;         ;
+; logic.inc                        ; yes             ; User Unspecified File  ; /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/logic.inc           ;         ;
+; MUX.v                            ; yes             ; User Verilog HDL File  ; /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/MUX.v               ;         ;
++----------------------------------+-----------------+------------------------+---------------------------------------------------------------------+---------+
+
+
++---------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary             ;
++---------------------------------------------+-----------+
+; Resource                                    ; Usage     ;
++---------------------------------------------+-----------+
+; Estimate of Logic utilization (ALMs needed) ; 428       ;
+;                                             ;           ;
+; Combinational ALUT usage for logic          ; 729       ;
+;     -- 7 input functions                    ; 2         ;
+;     -- 6 input functions                    ; 65        ;
+;     -- 5 input functions                    ; 120       ;
+;     -- 4 input functions                    ; 113       ;
+;     -- <=3 input functions                  ; 429       ;
+;                                             ;           ;
+; Dedicated logic registers                   ; 768       ;
+;                                             ;           ;
+; I/O pins                                    ; 41        ;
+;                                             ;           ;
+; Total DSP Blocks                            ; 0         ;
+;                                             ;           ;
+; Maximum fan-out node                        ; clk~input ;
+; Maximum fan-out                             ; 768       ;
+; Total fan-out                               ; 4310      ;
+; Average fan-out                             ; 2.73      ;
++---------------------------------------------+-----------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                 ;
++------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+------------------------------------------------+-------------+--------------+
+; Compilation Hierarchy Node   ; Combinational ALUTs ; Dedicated Logic Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name                            ; Entity Name ; Library Name ;
++------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+------------------------------------------------+-------------+--------------+
+; |chip_6502                   ; 729 (113)           ; 768 (768)                 ; 0                 ; 0          ; 41   ; 0            ; |chip_6502                                     ; chip_6502   ; work         ;
+;    |LOGIC:logic_00|          ; 616 (481)           ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |chip_6502|LOGIC:logic_00                      ; LOGIC       ; work         ;
+;       |MUX:mux_adh_1160|     ; 2 (2)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |chip_6502|LOGIC:logic_00|MUX:mux_adh_1160     ; MUX         ; work         ;
+;       |MUX:mux_adh_13|       ; 2 (2)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |chip_6502|LOGIC:logic_00|MUX:mux_adh_13       ; MUX         ; work         ;
+;       |MUX:mux_adh_1539|     ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |chip_6502|LOGIC:logic_00|MUX:mux_adh_1539     ; MUX         ; work         ;
+;       |MUX:mux_adh_1651|     ; 2 (2)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |chip_6502|LOGIC:logic_00|MUX:mux_adh_1651     ; MUX         ; work         ;
+;       |MUX:mux_adh_315|      ; 2 (2)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |chip_6502|LOGIC:logic_00|MUX:mux_adh_315      ; MUX         ; work         ;
+;       |MUX:mux_adh_407|      ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |chip_6502|LOGIC:logic_00|MUX:mux_adh_407      ; MUX         ; work         ;
+;       |MUX:mux_adh_483|      ; 2 (2)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |chip_6502|LOGIC:logic_00|MUX:mux_adh_483      ; MUX         ; work         ;
+;       |MUX:mux_adh_52|       ; 3 (3)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |chip_6502|LOGIC:logic_00|MUX:mux_adh_52       ; MUX         ; work         ;
+;       |MUX:mux_adl_121|      ; 2 (2)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |chip_6502|LOGIC:logic_00|MUX:mux_adl_121      ; MUX         ; work         ;
+;       |MUX:mux_adl_1299|     ; 2 (2)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |chip_6502|LOGIC:logic_00|MUX:mux_adl_1299     ; MUX         ; work         ;
+;       |MUX:mux_adl_1437|     ; 2 (2)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |chip_6502|LOGIC:logic_00|MUX:mux_adl_1437     ; MUX         ; work         ;
+;       |MUX:mux_adl_1630|     ; 2 (2)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |chip_6502|LOGIC:logic_00|MUX:mux_adl_1630     ; MUX         ; work         ;
+;       |MUX:mux_adl_413|      ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |chip_6502|LOGIC:logic_00|MUX:mux_adl_413      ; MUX         ; work         ;
+;       |MUX:mux_adl_684|      ; 2 (2)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |chip_6502|LOGIC:logic_00|MUX:mux_adl_684      ; MUX         ; work         ;
+;       |MUX:mux_alu_out_1123| ; 2 (2)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |chip_6502|LOGIC:logic_00|MUX:mux_alu_out_1123 ; MUX         ; work         ;
+;       |MUX:mux_alu_out_1490| ; 3 (3)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |chip_6502|LOGIC:logic_00|MUX:mux_alu_out_1490 ; MUX         ; work         ;
+;       |MUX:mux_alu_out_276|  ; 3 (3)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |chip_6502|LOGIC:logic_00|MUX:mux_alu_out_276  ; MUX         ; work         ;
+;       |MUX:mux_alu_out_394|  ; 4 (4)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |chip_6502|LOGIC:logic_00|MUX:mux_alu_out_394  ; MUX         ; work         ;
+;       |MUX:mux_alu_out_495|  ; 3 (3)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |chip_6502|LOGIC:logic_00|MUX:mux_alu_out_495  ; MUX         ; work         ;
+;       |MUX:mux_alu_out_68|   ; 3 (3)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |chip_6502|LOGIC:logic_00|MUX:mux_alu_out_68   ; MUX         ; work         ;
+;       |MUX:mux_alu_out_697|  ; 3 (3)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |chip_6502|LOGIC:logic_00|MUX:mux_alu_out_697  ; MUX         ; work         ;
+;       |MUX:mux_alu_out_893|  ; 3 (3)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |chip_6502|LOGIC:logic_00|MUX:mux_alu_out_893  ; MUX         ; work         ;
+;       |MUX:mux_alua_1142|    ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |chip_6502|LOGIC:logic_00|MUX:mux_alua_1142    ; MUX         ; work         ;
+;       |MUX:mux_alua_1167|    ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |chip_6502|LOGIC:logic_00|MUX:mux_alua_1167    ; MUX         ; work         ;
+;       |MUX:mux_alua_1248|    ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |chip_6502|LOGIC:logic_00|MUX:mux_alua_1248    ; MUX         ; work         ;
+;       |MUX:mux_alua_1332|    ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |chip_6502|LOGIC:logic_00|MUX:mux_alua_1332    ; MUX         ; work         ;
+;       |MUX:mux_alua_1522|    ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |chip_6502|LOGIC:logic_00|MUX:mux_alua_1522    ; MUX         ; work         ;
+;       |MUX:mux_alua_1627|    ; 2 (2)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |chip_6502|LOGIC:logic_00|MUX:mux_alua_1627    ; MUX         ; work         ;
+;       |MUX:mux_alua_1680|    ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |chip_6502|LOGIC:logic_00|MUX:mux_alua_1680    ; MUX         ; work         ;
+;       |MUX:mux_alua_530|     ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |chip_6502|LOGIC:logic_00|MUX:mux_alua_530     ; MUX         ; work         ;
+;       |MUX:mux_alub_1432|    ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |chip_6502|LOGIC:logic_00|MUX:mux_alub_1432    ; MUX         ; work         ;
+;       |MUX:mux_alub_1535|    ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |chip_6502|LOGIC:logic_00|MUX:mux_alub_1535    ; MUX         ; work         ;
+;       |MUX:mux_alub_1645|    ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |chip_6502|LOGIC:logic_00|MUX:mux_alub_1645    ; MUX         ; work         ;
+;       |MUX:mux_alub_1678|    ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |chip_6502|LOGIC:logic_00|MUX:mux_alub_1678    ; MUX         ; work         ;
+;       |MUX:mux_alub_235|     ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |chip_6502|LOGIC:logic_00|MUX:mux_alub_235     ; MUX         ; work         ;
+;       |MUX:mux_alub_704|     ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |chip_6502|LOGIC:logic_00|MUX:mux_alub_704     ; MUX         ; work         ;
+;       |MUX:mux_alub_96|      ; 2 (2)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |chip_6502|LOGIC:logic_00|MUX:mux_alub_96      ; MUX         ; work         ;
+;       |MUX:mux_alub_977|     ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |chip_6502|LOGIC:logic_00|MUX:mux_alub_977     ; MUX         ; work         ;
+;       |MUX:mux_idb_1108|     ; 5 (5)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |chip_6502|LOGIC:logic_00|MUX:mux_idb_1108     ; MUX         ; work         ;
+;       |MUX:mux_idb_1302|     ; 3 (3)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |chip_6502|LOGIC:logic_00|MUX:mux_idb_1302     ; MUX         ; work         ;
+;       |MUX:mux_idb_1473|     ; 3 (3)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |chip_6502|LOGIC:logic_00|MUX:mux_idb_1473     ; MUX         ; work         ;
+;       |MUX:mux_idb_1503|     ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |chip_6502|LOGIC:logic_00|MUX:mux_idb_1503     ; MUX         ; work         ;
+;       |MUX:mux_idb_493|      ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |chip_6502|LOGIC:logic_00|MUX:mux_idb_493      ; MUX         ; work         ;
+;       |MUX:mux_idb_833|      ; 3 (3)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |chip_6502|LOGIC:logic_00|MUX:mux_idb_833      ; MUX         ; work         ;
+;       |MUX:mux_idb_892|      ; 3 (3)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |chip_6502|LOGIC:logic_00|MUX:mux_idb_892      ; MUX         ; work         ;
+;       |MUX:mux_idb_991|      ; 3 (3)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |chip_6502|LOGIC:logic_00|MUX:mux_idb_991      ; MUX         ; work         ;
+;       |MUX:mux_pch_1551|     ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |chip_6502|LOGIC:logic_00|MUX:mux_pch_1551     ; MUX         ; work         ;
+;       |MUX:mux_pch_1670|     ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |chip_6502|LOGIC:logic_00|MUX:mux_pch_1670     ; MUX         ; work         ;
+;       |MUX:mux_pch_205|      ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |chip_6502|LOGIC:logic_00|MUX:mux_pch_205      ; MUX         ; work         ;
+;       |MUX:mux_pch_292|      ; 2 (2)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |chip_6502|LOGIC:logic_00|MUX:mux_pch_292      ; MUX         ; work         ;
+;       |MUX:mux_pch_49|       ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |chip_6502|LOGIC:logic_00|MUX:mux_pch_49       ; MUX         ; work         ;
+;       |MUX:mux_pch_502|      ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |chip_6502|LOGIC:logic_00|MUX:mux_pch_502      ; MUX         ; work         ;
+;       |MUX:mux_pch_584|      ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |chip_6502|LOGIC:logic_00|MUX:mux_pch_584      ; MUX         ; work         ;
+;       |MUX:mux_pch_948|      ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |chip_6502|LOGIC:logic_00|MUX:mux_pch_948      ; MUX         ; work         ;
+;       |MUX:mux_pcl_1022|     ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |chip_6502|LOGIC:logic_00|MUX:mux_pcl_1022     ; MUX         ; work         ;
+;       |MUX:mux_pcl_1139|     ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |chip_6502|LOGIC:logic_00|MUX:mux_pcl_1139     ; MUX         ; work         ;
+;       |MUX:mux_pcl_1359|     ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |chip_6502|LOGIC:logic_00|MUX:mux_pcl_1359     ; MUX         ; work         ;
+;       |MUX:mux_pcl_1611|     ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |chip_6502|LOGIC:logic_00|MUX:mux_pcl_1611     ; MUX         ; work         ;
+;       |MUX:mux_pcl_377|      ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |chip_6502|LOGIC:logic_00|MUX:mux_pcl_377      ; MUX         ; work         ;
+;       |MUX:mux_pcl_622|      ; 2 (2)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |chip_6502|LOGIC:logic_00|MUX:mux_pcl_622      ; MUX         ; work         ;
+;       |MUX:mux_pcl_655|      ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |chip_6502|LOGIC:logic_00|MUX:mux_pcl_655      ; MUX         ; work         ;
+;       |MUX:mux_pcl_900|      ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |chip_6502|LOGIC:logic_00|MUX:mux_pcl_900      ; MUX         ; work         ;
+;       |MUX:mux_sb_1001|      ; 2 (2)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |chip_6502|LOGIC:logic_00|MUX:mux_sb_1001      ; MUX         ; work         ;
+;       |MUX:mux_sb_1150|      ; 5 (5)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |chip_6502|LOGIC:logic_00|MUX:mux_sb_1150      ; MUX         ; work         ;
+;       |MUX:mux_sb_1188|      ; 4 (4)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |chip_6502|LOGIC:logic_00|MUX:mux_sb_1188      ; MUX         ; work         ;
+;       |MUX:mux_sb_1287|      ; 4 (4)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |chip_6502|LOGIC:logic_00|MUX:mux_sb_1287      ; MUX         ; work         ;
+;       |MUX:mux_sb_1336|      ; 4 (4)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |chip_6502|LOGIC:logic_00|MUX:mux_sb_1336      ; MUX         ; work         ;
+;       |MUX:mux_sb_1405|      ; 4 (4)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |chip_6502|LOGIC:logic_00|MUX:mux_sb_1405      ; MUX         ; work         ;
+;       |MUX:mux_sb_166|       ; 3 (3)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |chip_6502|LOGIC:logic_00|MUX:mux_sb_166       ; MUX         ; work         ;
+;       |MUX:mux_sb_54|        ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |chip_6502|LOGIC:logic_00|MUX:mux_sb_54        ; MUX         ; work         ;
++------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+------------------------------------------------+-------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
++--------------------------------------------------------------+
+; Registers Removed During Synthesis                           ;
++----------------------------------------+---------------------+
+; Register name                          ; Reason for Removal  ;
++----------------------------------------+---------------------+
+; q[1536]                                ; Merged with q[17]   ;
+; q[398]                                 ; Merged with q[56]   ;
+; q[447]                                 ; Merged with q[58]   ;
+; q[342]                                 ; Merged with q[60]   ;
+; q[968]                                 ; Merged with q[73]   ;
+; q[1582]                                ; Merged with q[157]  ;
+; q[1543]                                ; Merged with q[179]  ;
+; q[1528]                                ; Merged with q[223]  ;
+; q[785]                                 ; Merged with q[226]  ;
+; q[1173]                                ; Merged with q[257]  ;
+; q[354]                                 ; Merged with q[281]  ;
+; q[1036]                                ; Merged with q[449]  ;
+; q[492]                                 ; Merged with q[461]  ;
+; q[1011]                                ; Merged with q[537]  ;
+; q[691]                                 ; Merged with q[546]  ;
+; q[1285]                                ; Merged with q[623]  ;
+; q[1121]                                ; Merged with q[683]  ;
+; q[1052]                                ; Merged with q[764]  ;
+; q[1050]                                ; Merged with q[791]  ;
+; q[1693]                                ; Merged with q[799]  ;
+; q[1155]                                ; Merged with q[822]  ;
+; q[1272,1276,1624,1679]                 ; Merged with q[902]  ;
+; q[1569]                                ; Merged with q[1311] ;
+; q[1487]                                ; Merged with q[1430] ;
+; q[758]                                 ; Merged with q[116]  ;
+; q[576]                                 ; Merged with q[361]  ;
+; q[955]                                 ; Merged with q[1485] ;
+; q[894]                                 ; Merged with q[1284] ;
+; q[369]                                 ; Merged with q[1516] ;
+; q[829]                                 ; Merged with q[498]  ;
+; q[1669]                                ; Merged with q[1537] ;
+; q[529]                                 ; Merged with q[1690] ;
+; Total Number of Removed Registers = 35 ;                     ;
++----------------------------------------+---------------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 768   ;
+; Number of registers using Synchronous Clear  ; 0     ;
+; Number of registers using Synchronous Load   ; 9     ;
+; Number of registers using Asynchronous Clear ; 0     ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 299   ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                           ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
+; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |chip_6502|q[1435]         ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
+
+
++-----------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: LOGIC:logic_00|MUX:mux_sb_1287 ;
++----------------+-------+----------------------------------------------------+
+; Parameter Name ; Value ; Type                                               ;
++----------------+-------+----------------------------------------------------+
+; N              ; 8     ; Signed Integer                                     ;
++----------------+-------+----------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: LOGIC:logic_00|MUX:mux_idb_1473 ;
++----------------+-------+-----------------------------------------------------+
+; Parameter Name ; Value ; Type                                                ;
++----------------+-------+-----------------------------------------------------+
+; N              ; 7     ; Signed Integer                                      ;
++----------------+-------+-----------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: LOGIC:logic_00|MUX:mux_adl_1242 ;
++----------------+-------+-----------------------------------------------------+
+; Parameter Name ; Value ; Type                                                ;
++----------------+-------+-----------------------------------------------------+
+; N              ; 6     ; Signed Integer                                      ;
++----------------+-------+-----------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: LOGIC:logic_00|MUX:mux_adh_1651 ;
++----------------+-------+-----------------------------------------------------+
+; Parameter Name ; Value ; Type                                                ;
++----------------+-------+-----------------------------------------------------+
+; N              ; 5     ; Signed Integer                                      ;
++----------------+-------+-----------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: LOGIC:logic_00|MUX:mux_pcl_655 ;
++----------------+-------+----------------------------------------------------+
+; Parameter Name ; Value ; Type                                               ;
++----------------+-------+----------------------------------------------------+
+; N              ; 2     ; Signed Integer                                     ;
++----------------+-------+----------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: LOGIC:logic_00|MUX:mux_pch_502 ;
++----------------+-------+----------------------------------------------------+
+; Parameter Name ; Value ; Type                                               ;
++----------------+-------+----------------------------------------------------+
+; N              ; 2     ; Signed Integer                                     ;
++----------------+-------+----------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++---------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: LOGIC:logic_00|MUX:mux_sb_54 ;
++----------------+-------+--------------------------------------------------+
+; Parameter Name ; Value ; Type                                             ;
++----------------+-------+--------------------------------------------------+
+; N              ; 8     ; Signed Integer                                   ;
++----------------+-------+--------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: LOGIC:logic_00|MUX:mux_idb_1108 ;
++----------------+-------+-----------------------------------------------------+
+; Parameter Name ; Value ; Type                                                ;
++----------------+-------+-----------------------------------------------------+
+; N              ; 7     ; Signed Integer                                      ;
++----------------+-------+-----------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: LOGIC:logic_00|MUX:mux_adl_413 ;
++----------------+-------+----------------------------------------------------+
+; Parameter Name ; Value ; Type                                               ;
++----------------+-------+----------------------------------------------------+
+; N              ; 6     ; Signed Integer                                     ;
++----------------+-------+----------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: LOGIC:logic_00|MUX:mux_adh_407 ;
++----------------+-------+----------------------------------------------------+
+; Parameter Name ; Value ; Type                                               ;
++----------------+-------+----------------------------------------------------+
+; N              ; 5     ; Signed Integer                                     ;
++----------------+-------+----------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: LOGIC:logic_00|MUX:mux_pcl_1139 ;
++----------------+-------+-----------------------------------------------------+
+; Parameter Name ; Value ; Type                                                ;
++----------------+-------+-----------------------------------------------------+
+; N              ; 2     ; Signed Integer                                      ;
++----------------+-------+-----------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: LOGIC:logic_00|MUX:mux_pch_1670 ;
++----------------+-------+-----------------------------------------------------+
+; Parameter Name ; Value ; Type                                                ;
++----------------+-------+-----------------------------------------------------+
+; N              ; 2     ; Signed Integer                                      ;
++----------------+-------+-----------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: LOGIC:logic_00|MUX:mux_sb_1150 ;
++----------------+-------+----------------------------------------------------+
+; Parameter Name ; Value ; Type                                               ;
++----------------+-------+----------------------------------------------------+
+; N              ; 8     ; Signed Integer                                     ;
++----------------+-------+----------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: LOGIC:logic_00|MUX:mux_idb_991 ;
++----------------+-------+----------------------------------------------------+
+; Parameter Name ; Value ; Type                                               ;
++----------------+-------+----------------------------------------------------+
+; N              ; 7     ; Signed Integer                                     ;
++----------------+-------+----------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: LOGIC:logic_00|MUX:mux_adl_1282 ;
++----------------+-------+-----------------------------------------------------+
+; Parameter Name ; Value ; Type                                                ;
++----------------+-------+-----------------------------------------------------+
+; N              ; 6     ; Signed Integer                                      ;
++----------------+-------+-----------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: LOGIC:logic_00|MUX:mux_adh_52 ;
++----------------+-------+---------------------------------------------------+
+; Parameter Name ; Value ; Type                                              ;
++----------------+-------+---------------------------------------------------+
+; N              ; 5     ; Signed Integer                                    ;
++----------------+-------+---------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: LOGIC:logic_00|MUX:mux_pcl_1022 ;
++----------------+-------+-----------------------------------------------------+
+; Parameter Name ; Value ; Type                                                ;
++----------------+-------+-----------------------------------------------------+
+; N              ; 2     ; Signed Integer                                      ;
++----------------+-------+-----------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: LOGIC:logic_00|MUX:mux_pch_292 ;
++----------------+-------+----------------------------------------------------+
+; Parameter Name ; Value ; Type                                               ;
++----------------+-------+----------------------------------------------------+
+; N              ; 2     ; Signed Integer                                     ;
++----------------+-------+----------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: LOGIC:logic_00|MUX:mux_sb_1188 ;
++----------------+-------+----------------------------------------------------+
+; Parameter Name ; Value ; Type                                               ;
++----------------+-------+----------------------------------------------------+
+; N              ; 8     ; Signed Integer                                     ;
++----------------+-------+----------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: LOGIC:logic_00|MUX:mux_idb_1302 ;
++----------------+-------+-----------------------------------------------------+
+; Parameter Name ; Value ; Type                                                ;
++----------------+-------+-----------------------------------------------------+
+; N              ; 7     ; Signed Integer                                      ;
++----------------+-------+-----------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: LOGIC:logic_00|MUX:mux_adl_684 ;
++----------------+-------+----------------------------------------------------+
+; Parameter Name ; Value ; Type                                               ;
++----------------+-------+----------------------------------------------------+
+; N              ; 6     ; Signed Integer                                     ;
++----------------+-------+----------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: LOGIC:logic_00|MUX:mux_adh_315 ;
++----------------+-------+----------------------------------------------------+
+; Parameter Name ; Value ; Type                                               ;
++----------------+-------+----------------------------------------------------+
+; N              ; 5     ; Signed Integer                                     ;
++----------------+-------+----------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: LOGIC:logic_00|MUX:mux_pcl_1359 ;
++----------------+-------+-----------------------------------------------------+
+; Parameter Name ; Value ; Type                                                ;
++----------------+-------+-----------------------------------------------------+
+; N              ; 2     ; Signed Integer                                      ;
++----------------+-------+-----------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: LOGIC:logic_00|MUX:mux_pch_584 ;
++----------------+-------+----------------------------------------------------+
+; Parameter Name ; Value ; Type                                               ;
++----------------+-------+----------------------------------------------------+
+; N              ; 2     ; Signed Integer                                     ;
++----------------+-------+----------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: LOGIC:logic_00|MUX:mux_sb_1405 ;
++----------------+-------+----------------------------------------------------+
+; Parameter Name ; Value ; Type                                               ;
++----------------+-------+----------------------------------------------------+
+; N              ; 8     ; Signed Integer                                     ;
++----------------+-------+----------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: LOGIC:logic_00|MUX:mux_idb_892 ;
++----------------+-------+----------------------------------------------------+
+; Parameter Name ; Value ; Type                                               ;
++----------------+-------+----------------------------------------------------+
+; N              ; 7     ; Signed Integer                                     ;
++----------------+-------+----------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: LOGIC:logic_00|MUX:mux_adl_1437 ;
++----------------+-------+-----------------------------------------------------+
+; Parameter Name ; Value ; Type                                                ;
++----------------+-------+-----------------------------------------------------+
+; N              ; 6     ; Signed Integer                                      ;
++----------------+-------+-----------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: LOGIC:logic_00|MUX:mux_adh_1160 ;
++----------------+-------+-----------------------------------------------------+
+; Parameter Name ; Value ; Type                                                ;
++----------------+-------+-----------------------------------------------------+
+; N              ; 5     ; Signed Integer                                      ;
++----------------+-------+-----------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: LOGIC:logic_00|MUX:mux_pcl_900 ;
++----------------+-------+----------------------------------------------------+
+; Parameter Name ; Value ; Type                                               ;
++----------------+-------+----------------------------------------------------+
+; N              ; 2     ; Signed Integer                                     ;
++----------------+-------+----------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: LOGIC:logic_00|MUX:mux_pch_948 ;
++----------------+-------+----------------------------------------------------+
+; Parameter Name ; Value ; Type                                               ;
++----------------+-------+----------------------------------------------------+
+; N              ; 2     ; Signed Integer                                     ;
++----------------+-------+----------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: LOGIC:logic_00|MUX:mux_sb_166 ;
++----------------+-------+---------------------------------------------------+
+; Parameter Name ; Value ; Type                                              ;
++----------------+-------+---------------------------------------------------+
+; N              ; 8     ; Signed Integer                                    ;
++----------------+-------+---------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: LOGIC:logic_00|MUX:mux_idb_1503 ;
++----------------+-------+-----------------------------------------------------+
+; Parameter Name ; Value ; Type                                                ;
++----------------+-------+-----------------------------------------------------+
+; N              ; 7     ; Signed Integer                                      ;
++----------------+-------+-----------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: LOGIC:logic_00|MUX:mux_adl_1630 ;
++----------------+-------+-----------------------------------------------------+
+; Parameter Name ; Value ; Type                                                ;
++----------------+-------+-----------------------------------------------------+
+; N              ; 6     ; Signed Integer                                      ;
++----------------+-------+-----------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: LOGIC:logic_00|MUX:mux_adh_483 ;
++----------------+-------+----------------------------------------------------+
+; Parameter Name ; Value ; Type                                               ;
++----------------+-------+----------------------------------------------------+
+; N              ; 5     ; Signed Integer                                     ;
++----------------+-------+----------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: LOGIC:logic_00|MUX:mux_pcl_622 ;
++----------------+-------+----------------------------------------------------+
+; Parameter Name ; Value ; Type                                               ;
++----------------+-------+----------------------------------------------------+
+; N              ; 2     ; Signed Integer                                     ;
++----------------+-------+----------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: LOGIC:logic_00|MUX:mux_pch_49 ;
++----------------+-------+---------------------------------------------------+
+; Parameter Name ; Value ; Type                                              ;
++----------------+-------+---------------------------------------------------+
+; N              ; 2     ; Signed Integer                                    ;
++----------------+-------+---------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: LOGIC:logic_00|MUX:mux_sb_1336 ;
++----------------+-------+----------------------------------------------------+
+; Parameter Name ; Value ; Type                                               ;
++----------------+-------+----------------------------------------------------+
+; N              ; 8     ; Signed Integer                                     ;
++----------------+-------+----------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: LOGIC:logic_00|MUX:mux_idb_833 ;
++----------------+-------+----------------------------------------------------+
+; Parameter Name ; Value ; Type                                               ;
++----------------+-------+----------------------------------------------------+
+; N              ; 7     ; Signed Integer                                     ;
++----------------+-------+----------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: LOGIC:logic_00|MUX:mux_adl_121 ;
++----------------+-------+----------------------------------------------------+
+; Parameter Name ; Value ; Type                                               ;
++----------------+-------+----------------------------------------------------+
+; N              ; 6     ; Signed Integer                                     ;
++----------------+-------+----------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: LOGIC:logic_00|MUX:mux_adh_13 ;
++----------------+-------+---------------------------------------------------+
+; Parameter Name ; Value ; Type                                              ;
++----------------+-------+---------------------------------------------------+
+; N              ; 5     ; Signed Integer                                    ;
++----------------+-------+---------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: LOGIC:logic_00|MUX:mux_pcl_377 ;
++----------------+-------+----------------------------------------------------+
+; Parameter Name ; Value ; Type                                               ;
++----------------+-------+----------------------------------------------------+
+; N              ; 2     ; Signed Integer                                     ;
++----------------+-------+----------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: LOGIC:logic_00|MUX:mux_pch_1551 ;
++----------------+-------+-----------------------------------------------------+
+; Parameter Name ; Value ; Type                                                ;
++----------------+-------+-----------------------------------------------------+
+; N              ; 2     ; Signed Integer                                      ;
++----------------+-------+-----------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: LOGIC:logic_00|MUX:mux_sb_1001 ;
++----------------+-------+----------------------------------------------------+
+; Parameter Name ; Value ; Type                                               ;
++----------------+-------+----------------------------------------------------+
+; N              ; 8     ; Signed Integer                                     ;
++----------------+-------+----------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: LOGIC:logic_00|MUX:mux_idb_493 ;
++----------------+-------+----------------------------------------------------+
+; Parameter Name ; Value ; Type                                               ;
++----------------+-------+----------------------------------------------------+
+; N              ; 7     ; Signed Integer                                     ;
++----------------+-------+----------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: LOGIC:logic_00|MUX:mux_adl_1299 ;
++----------------+-------+-----------------------------------------------------+
+; Parameter Name ; Value ; Type                                                ;
++----------------+-------+-----------------------------------------------------+
+; N              ; 6     ; Signed Integer                                      ;
++----------------+-------+-----------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: LOGIC:logic_00|MUX:mux_adh_1539 ;
++----------------+-------+-----------------------------------------------------+
+; Parameter Name ; Value ; Type                                                ;
++----------------+-------+-----------------------------------------------------+
+; N              ; 5     ; Signed Integer                                      ;
++----------------+-------+-----------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: LOGIC:logic_00|MUX:mux_pcl_1611 ;
++----------------+-------+-----------------------------------------------------+
+; Parameter Name ; Value ; Type                                                ;
++----------------+-------+-----------------------------------------------------+
+; N              ; 2     ; Signed Integer                                      ;
++----------------+-------+-----------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: LOGIC:logic_00|MUX:mux_pch_205 ;
++----------------+-------+----------------------------------------------------+
+; Parameter Name ; Value ; Type                                               ;
++----------------+-------+----------------------------------------------------+
+; N              ; 2     ; Signed Integer                                     ;
++----------------+-------+----------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: LOGIC:logic_00|MUX:mux_alu_out_68 ;
++----------------+-------+-------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                  ;
++----------------+-------+-------------------------------------------------------+
+; N              ; 5     ; Signed Integer                                        ;
++----------------+-------+-------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++---------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: LOGIC:logic_00|MUX:mux_alu_out_276 ;
++----------------+-------+--------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                   ;
++----------------+-------+--------------------------------------------------------+
+; N              ; 5     ; Signed Integer                                         ;
++----------------+-------+--------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++---------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: LOGIC:logic_00|MUX:mux_alu_out_495 ;
++----------------+-------+--------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                   ;
++----------------+-------+--------------------------------------------------------+
+; N              ; 5     ; Signed Integer                                         ;
++----------------+-------+--------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++---------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: LOGIC:logic_00|MUX:mux_alu_out_893 ;
++----------------+-------+--------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                   ;
++----------------+-------+--------------------------------------------------------+
+; N              ; 5     ; Signed Integer                                         ;
++----------------+-------+--------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++---------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: LOGIC:logic_00|MUX:mux_alu_out_394 ;
++----------------+-------+--------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                   ;
++----------------+-------+--------------------------------------------------------+
+; N              ; 5     ; Signed Integer                                         ;
++----------------+-------+--------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++---------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: LOGIC:logic_00|MUX:mux_alu_out_697 ;
++----------------+-------+--------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                   ;
++----------------+-------+--------------------------------------------------------+
+; N              ; 5     ; Signed Integer                                         ;
++----------------+-------+--------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: LOGIC:logic_00|MUX:mux_alu_out_1490 ;
++----------------+-------+---------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                    ;
++----------------+-------+---------------------------------------------------------+
+; N              ; 5     ; Signed Integer                                          ;
++----------------+-------+---------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: LOGIC:logic_00|MUX:mux_alu_out_1123 ;
++----------------+-------+---------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                    ;
++----------------+-------+---------------------------------------------------------+
+; N              ; 5     ; Signed Integer                                          ;
++----------------+-------+---------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: LOGIC:logic_00|MUX:mux_alua_1627 ;
++----------------+-------+------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                 ;
++----------------+-------+------------------------------------------------------+
+; N              ; 2     ; Signed Integer                                       ;
++----------------+-------+------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: LOGIC:logic_00|MUX:mux_alub_235 ;
++----------------+-------+-----------------------------------------------------+
+; Parameter Name ; Value ; Type                                                ;
++----------------+-------+-----------------------------------------------------+
+; N              ; 3     ; Signed Integer                                      ;
++----------------+-------+-----------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: LOGIC:logic_00|MUX:mux_alua_1522 ;
++----------------+-------+------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                 ;
++----------------+-------+------------------------------------------------------+
+; N              ; 2     ; Signed Integer                                       ;
++----------------+-------+------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: LOGIC:logic_00|MUX:mux_alub_1535 ;
++----------------+-------+------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                 ;
++----------------+-------+------------------------------------------------------+
+; N              ; 3     ; Signed Integer                                       ;
++----------------+-------+------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: LOGIC:logic_00|MUX:mux_alua_1332 ;
++----------------+-------+------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                 ;
++----------------+-------+------------------------------------------------------+
+; N              ; 2     ; Signed Integer                                       ;
++----------------+-------+------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: LOGIC:logic_00|MUX:mux_alub_704 ;
++----------------+-------+-----------------------------------------------------+
+; Parameter Name ; Value ; Type                                                ;
++----------------+-------+-----------------------------------------------------+
+; N              ; 3     ; Signed Integer                                      ;
++----------------+-------+-----------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: LOGIC:logic_00|MUX:mux_alua_1142 ;
++----------------+-------+------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                 ;
++----------------+-------+------------------------------------------------------+
+; N              ; 2     ; Signed Integer                                       ;
++----------------+-------+------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: LOGIC:logic_00|MUX:mux_alub_1645 ;
++----------------+-------+------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                 ;
++----------------+-------+------------------------------------------------------+
+; N              ; 3     ; Signed Integer                                       ;
++----------------+-------+------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: LOGIC:logic_00|MUX:mux_alua_1248 ;
++----------------+-------+------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                 ;
++----------------+-------+------------------------------------------------------+
+; N              ; 2     ; Signed Integer                                       ;
++----------------+-------+------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: LOGIC:logic_00|MUX:mux_alub_1432 ;
++----------------+-------+------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                 ;
++----------------+-------+------------------------------------------------------+
+; N              ; 3     ; Signed Integer                                       ;
++----------------+-------+------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: LOGIC:logic_00|MUX:mux_alua_1167 ;
++----------------+-------+------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                 ;
++----------------+-------+------------------------------------------------------+
+; N              ; 2     ; Signed Integer                                       ;
++----------------+-------+------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: LOGIC:logic_00|MUX:mux_alub_977 ;
++----------------+-------+-----------------------------------------------------+
+; Parameter Name ; Value ; Type                                                ;
++----------------+-------+-----------------------------------------------------+
+; N              ; 3     ; Signed Integer                                      ;
++----------------+-------+-----------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: LOGIC:logic_00|MUX:mux_alua_530 ;
++----------------+-------+-----------------------------------------------------+
+; Parameter Name ; Value ; Type                                                ;
++----------------+-------+-----------------------------------------------------+
+; N              ; 2     ; Signed Integer                                      ;
++----------------+-------+-----------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: LOGIC:logic_00|MUX:mux_alub_1678 ;
++----------------+-------+------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                 ;
++----------------+-------+------------------------------------------------------+
+; N              ; 3     ; Signed Integer                                       ;
++----------------+-------+------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: LOGIC:logic_00|MUX:mux_alua_1680 ;
++----------------+-------+------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                 ;
++----------------+-------+------------------------------------------------------+
+; N              ; 2     ; Signed Integer                                       ;
++----------------+-------+------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: LOGIC:logic_00|MUX:mux_alub_96 ;
++----------------+-------+----------------------------------------------------+
+; Parameter Name ; Value ; Type                                               ;
++----------------+-------+----------------------------------------------------+
+; N              ; 3     ; Signed Integer                                     ;
++----------------+-------+----------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "LOGIC:logic_00"                                                                        ;
++---------+--------+----------+-------------------------------------------------------------------------------------+
+; Port    ; Type   ; Severity ; Details                                                                             ;
++---------+--------+----------+-------------------------------------------------------------------------------------+
+; i[657]  ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; i[558]  ; Input  ; Info     ; Stuck at GND                                                                        ;
+; o[1672] ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; o[1297] ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; o[1171] ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; o[657]  ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; o[558]  ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; o[159]  ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; o[103]  ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; o[89]   ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++---------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++-----------------------------------------------------+
+; Post-Synthesis Netlist Statistics for Top Partition ;
++-----------------------+-----------------------------+
+; Type                  ; Count                       ;
++-----------------------+-----------------------------+
+; arriav_ff             ; 768                         ;
+;     ENA               ; 291                         ;
+;     ENA SLD           ; 8                           ;
+;     SLD               ; 1                           ;
+;     plain             ; 468                         ;
+; arriav_lcell_comb     ; 739                         ;
+;     extend            ; 2                           ;
+;         7 data inputs ; 2                           ;
+;     normal            ; 737                         ;
+;         1 data inputs ; 93                          ;
+;         2 data inputs ; 187                         ;
+;         3 data inputs ; 159                         ;
+;         4 data inputs ; 113                         ;
+;         5 data inputs ; 120                         ;
+;         6 data inputs ; 65                          ;
+; boundary_port         ; 41                          ;
+;                       ;                             ;
+; Max LUT depth         ; 3.00                        ;
+; Average LUT depth     ; 1.24                        ;
++-----------------------+-----------------------------+
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:00:02     ;
++----------------+--------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus Prime Analysis & Synthesis
+    Info: Version 22.1std.0 Build 915 10/25/2022 SC Lite Edition
+    Info: Processing started: Sat Dec 17 18:07:30 2022
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off chip_6502 -c chip_6502
+Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
+Info (20030): Parallel compilation is enabled and will use 3 of the 3 processors detected
+Info (12021): Found 2 design units, including 2 entities, in source file chip_6502.v
+    Info (12023): Found entity 1: LOGIC File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 3
+    Info (12023): Found entity 2: chip_6502 File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 11
+Info (12021): Found 1 design units, including 1 entities, in source file DAC.v
+    Info (12023): Found entity 1: DAC File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/DAC.v Line: 1
+Warning (12090): Entity "MUX" obtained from "MUX.v" instead of from Quartus Prime megafunction library File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/MUX.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file MUX.v
+    Info (12023): Found entity 1: MUX File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/MUX.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file Pool.v
+    Info (12023): Found entity 1: Pool File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/Pool.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file Pool_tb.v
+    Info (12023): Found entity 1: Pool_tb File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/Pool_tb.v Line: 5
+Info (12127): Elaborating entity "chip_6502" for the top level hierarchy
+Info (12128): Elaborating entity "LOGIC" for hierarchy "LOGIC:logic_00" File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 31
+Warning (10034): Output port "o[1724..1722]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1720..1718]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1715..1714]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1711]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1709..1706]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1703]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1701..1700]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1697..1694]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1692]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1689]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1687..1684]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1682..1681]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1677..1676]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1672]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1668..1666]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1663..1659]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1656..1654]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1650]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1647]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1644..1643]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1641..1633]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1626]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1623]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1621]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1618..1615]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1613]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1608]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1605..1604]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1600..1595]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1593..1592]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1590]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1588]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1585..1583]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1580]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1578]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1576]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1573..1571]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1568..1566]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1564..1563]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1561..1558]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1556..1554]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1552]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1550..1545]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1541]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1538]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1534]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1531]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1526]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1523]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1521]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1519..1518]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1515..1513]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1511..1510]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1508..1506]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1502..1501]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1499..1496]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1492..1491]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1489..1488]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1484..1483]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1481..1479]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1476]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1474]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1471..1467]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1463..1460]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1458]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1456]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1454..1453]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1451]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1449]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1446..1444]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1441..1439]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1434]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1429]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1427..1426]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1424..1421]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1419]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1417..1412]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1407..1406]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1401..1399]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1397]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1394]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1392]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1390..1387]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1384..1383]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1381]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1378..1375]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1370..1369]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1367..1361]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1357..1356]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1354..1353]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1351]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1348]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1346]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1344]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1339]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1335]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1330..1328]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1325]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1323..1322]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1320..1319]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1317]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1315]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1313]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1310]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1307..1304]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1301]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1298..1295]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1292]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1289]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1281..1277]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1273]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1271..1270]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1267]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1265..1264]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1262..1260]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1258]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1256..1254]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1251..1249]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1247]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1245..1244]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1240..1238]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1236..1235]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1232..1230]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1227]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1224..1222]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1218]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1214]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1208..1206]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1203..1198]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1195..1193]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1191..1189]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1187]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1183..1182]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1175..1174]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1172..1171]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1169]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1166..1163]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1158..1157]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1153..1151]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1147..1143]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1141..1140]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1138]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1135]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1133]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1129..1127]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1125]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1120..1118]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1116]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1114]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1112]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1110]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1105]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1103]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1100]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1096..1092]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1089..1088]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1083]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1080..1079]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1076..1075]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1072..1070]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1067..1066]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1062]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1060..1058]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1056]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1054..1053]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1048..1045]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1043..1040]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1038]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1034..1033]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1030]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1028]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1026..1024]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1021]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1017..1012]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1010]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1007..1006]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1004..1002]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[1000..997]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[995..994]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[992]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[990]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[988..987]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[983]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[981]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[976]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[973..969]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[967..966]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[963..961]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[958..956]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[954..951]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[949]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[947]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[942..941]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[939..934]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[931]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[929]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[926]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[924..920]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[918]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[915..905]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[903]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[901]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[896..895]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[891..890]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[888]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[886..883]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[881..880]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[872..869]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[867..866]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[864..861]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[856..855]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[853..852]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[850..849]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[846]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[842]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[840..838]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[836..834]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[831..830]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[826..825]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[821]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[818]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[816..814]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[808]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[806]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[803..802]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[800]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[798..797]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[795..793]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[789..788]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[783]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[778]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[776..775]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[772..765]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[763..761]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[755]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[749..746]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[744]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[742]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[740]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[738]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[734..733]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[731..730]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[728]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[726..721]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[719..718]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[716..713]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[711]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[709..707]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[705]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[703..702]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[700..699]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[694..692]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[690..689]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[687..686]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[682]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[676]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[670..667]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[662..661]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[659..656]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[652]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[648..645]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[643..641]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[639..638]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[635..633]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[631]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[628]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[625..624]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[619..617]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[612..611]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[608]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[606..605]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[603..602]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[600]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[593..591]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[588..587]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[585]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[583..582]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[580]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[578..577]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[574]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[572..571]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[569..567]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[565..563]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[558..556]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[551]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[548..547]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[545]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[543..542]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[538]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[535]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[533]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[531]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[525..524]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[520..517]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[514]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[511]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[508..507]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[505]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[503]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[500..499]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[497..496]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[494]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[491..488]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[485]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[482..481]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[478]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[476..475]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[471..470]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[466..462]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[458..457]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[455..452]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[445..444]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[442..438]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[436]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[434..431]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[429]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[426]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[424..419]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[417..416]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[411]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[409]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[406..405]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[401..400]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[397..395]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[392..389]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[387..386]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[383]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[381..380]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[376..372]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[368..367]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[365..362]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[359..358]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[356..355]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[353]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[351]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[346]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[343]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[341]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[337]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[332..331]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[329..328]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[326]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[322..320]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[318..316]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[314..311]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[306]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[304]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[300]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[298]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[296]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[291..287]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[284..282]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[280]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[278..277]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[270]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[255..253]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[250..246]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[244..236]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[234]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[232..231]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[229..227]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[225..224]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[221..220]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[217..216]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[214..212]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[210..208]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[206]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[203..201]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[198]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[196]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[194]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[189]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[186..184]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[178..177]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[173..171]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[168]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[165]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[163]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[161]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[159]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[156]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[154..153]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[150..149]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[147..146]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[144]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[141..135]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[133..132]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[130..127]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[124..122]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[120]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[118..117]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[113..105]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[103..102]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[100]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[97]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[93..89]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[87..86]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[83]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[79..77]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[75..74]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[72..70]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[67..66]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[63..61]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[59]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[57]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[51]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[43..41]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[39..37]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[35..33]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[31..30]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[28..25]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[23]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[21]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[16]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[12]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[9..5]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Warning (10034): Output port "o[3..2]" at chip_6502.v(5) has no driver File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/chip_6502.v Line: 5
+Info (12128): Elaborating entity "MUX" for hierarchy "LOGIC:logic_00|MUX:mux_sb_1287" File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/logic.inc Line: 404
+Info (12128): Elaborating entity "MUX" for hierarchy "LOGIC:logic_00|MUX:mux_idb_1473" File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/logic.inc Line: 405
+Info (12128): Elaborating entity "MUX" for hierarchy "LOGIC:logic_00|MUX:mux_adl_1242" File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/logic.inc Line: 406
+Info (12128): Elaborating entity "MUX" for hierarchy "LOGIC:logic_00|MUX:mux_adh_1651" File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/logic.inc Line: 407
+Info (12128): Elaborating entity "MUX" for hierarchy "LOGIC:logic_00|MUX:mux_pcl_655" File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/logic.inc Line: 408
+Info (12128): Elaborating entity "MUX" for hierarchy "LOGIC:logic_00|MUX:mux_alub_235" File: /home/lupin3se/intelFPGA_lite/22.1std/chip_6502/logic.inc Line: 632
+Info (286030): Timing-Driven Synthesis is running
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Info (21057): Implemented 958 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 15 input pins
+    Info (21059): Implemented 26 output pins
+    Info (21061): Implemented 917 logic cells
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 419 warnings
+    Info: Peak virtual memory: 462 megabytes
+    Info: Processing ended: Sat Dec 17 18:07:39 2022
+    Info: Elapsed time: 00:00:09
+    Info: Total CPU time (on all processors): 00:00:12
+
+

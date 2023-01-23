@@ -1,0 +1,173 @@
+{
+	"partitions" : [
+		{
+			"name" : "Top",
+			"pins" : [
+				{
+					"name" : "dbo[0]",
+					"strict" : false
+				},
+				{
+					"name" : "dbo[1]",
+					"strict" : false
+				},
+				{
+					"name" : "dbo[2]",
+					"strict" : false
+				},
+				{
+					"name" : "dbo[3]",
+					"strict" : false
+				},
+				{
+					"name" : "dbo[4]",
+					"strict" : false
+				},
+				{
+					"name" : "dbo[5]",
+					"strict" : false
+				},
+				{
+					"name" : "dbo[6]",
+					"strict" : false
+				},
+				{
+					"name" : "dbo[7]",
+					"strict" : false
+				},
+				{
+					"name" : "rw",
+					"strict" : false
+				},
+				{
+					"name" : "sync",
+					"strict" : false
+				},
+				{
+					"name" : "ab[0]",
+					"strict" : false
+				},
+				{
+					"name" : "ab[1]",
+					"strict" : false
+				},
+				{
+					"name" : "ab[2]",
+					"strict" : false
+				},
+				{
+					"name" : "ab[3]",
+					"strict" : false
+				},
+				{
+					"name" : "ab[4]",
+					"strict" : false
+				},
+				{
+					"name" : "ab[5]",
+					"strict" : false
+				},
+				{
+					"name" : "ab[6]",
+					"strict" : false
+				},
+				{
+					"name" : "ab[7]",
+					"strict" : false
+				},
+				{
+					"name" : "ab[8]",
+					"strict" : false
+				},
+				{
+					"name" : "ab[9]",
+					"strict" : false
+				},
+				{
+					"name" : "ab[10]",
+					"strict" : false
+				},
+				{
+					"name" : "ab[11]",
+					"strict" : false
+				},
+				{
+					"name" : "ab[12]",
+					"strict" : false
+				},
+				{
+					"name" : "ab[13]",
+					"strict" : false
+				},
+				{
+					"name" : "ab[14]",
+					"strict" : false
+				},
+				{
+					"name" : "ab[15]",
+					"strict" : false
+				},
+				{
+					"name" : "clk",
+					"strict" : false
+				},
+				{
+					"name" : "phi",
+					"strict" : false
+				},
+				{
+					"name" : "dbi[0]",
+					"strict" : false
+				},
+				{
+					"name" : "dbi[1]",
+					"strict" : false
+				},
+				{
+					"name" : "dbi[2]",
+					"strict" : false
+				},
+				{
+					"name" : "dbi[3]",
+					"strict" : false
+				},
+				{
+					"name" : "dbi[4]",
+					"strict" : false
+				},
+				{
+					"name" : "dbi[5]",
+					"strict" : false
+				},
+				{
+					"name" : "dbi[6]",
+					"strict" : false
+				},
+				{
+					"name" : "dbi[7]",
+					"strict" : false
+				},
+				{
+					"name" : "rdy",
+					"strict" : false
+				},
+				{
+					"name" : "res",
+					"strict" : false
+				},
+				{
+					"name" : "nmi",
+					"strict" : false
+				},
+				{
+					"name" : "so",
+					"strict" : false
+				},
+				{
+					"name" : "irq",
+					"strict" : false
+				}
+			]
+		}
+	]
+}

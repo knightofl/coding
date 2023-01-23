@@ -1,0 +1,161 @@
+{
+	"partitions" : [
+		{
+			"name" : "Top",
+			"pins" : [
+				{
+					"name" : "AB[0]",
+					"strict" : false
+				},
+				{
+					"name" : "AB[1]",
+					"strict" : false
+				},
+				{
+					"name" : "AB[2]",
+					"strict" : false
+				},
+				{
+					"name" : "AB[3]",
+					"strict" : false
+				},
+				{
+					"name" : "AB[4]",
+					"strict" : false
+				},
+				{
+					"name" : "AB[5]",
+					"strict" : false
+				},
+				{
+					"name" : "AB[6]",
+					"strict" : false
+				},
+				{
+					"name" : "AB[7]",
+					"strict" : false
+				},
+				{
+					"name" : "AB[8]",
+					"strict" : false
+				},
+				{
+					"name" : "AB[9]",
+					"strict" : false
+				},
+				{
+					"name" : "AB[10]",
+					"strict" : false
+				},
+				{
+					"name" : "AB[11]",
+					"strict" : false
+				},
+				{
+					"name" : "AB[12]",
+					"strict" : false
+				},
+				{
+					"name" : "AB[13]",
+					"strict" : false
+				},
+				{
+					"name" : "AB[14]",
+					"strict" : false
+				},
+				{
+					"name" : "AB[15]",
+					"strict" : false
+				},
+				{
+					"name" : "DO[0]",
+					"strict" : false
+				},
+				{
+					"name" : "DO[1]",
+					"strict" : false
+				},
+				{
+					"name" : "DO[2]",
+					"strict" : false
+				},
+				{
+					"name" : "DO[3]",
+					"strict" : false
+				},
+				{
+					"name" : "DO[4]",
+					"strict" : false
+				},
+				{
+					"name" : "DO[5]",
+					"strict" : false
+				},
+				{
+					"name" : "DO[6]",
+					"strict" : false
+				},
+				{
+					"name" : "DO[7]",
+					"strict" : false
+				},
+				{
+					"name" : "WE",
+					"strict" : false
+				},
+				{
+					"name" : "DI[0]",
+					"strict" : false
+				},
+				{
+					"name" : "RDY",
+					"strict" : false
+				},
+				{
+					"name" : "DI[1]",
+					"strict" : false
+				},
+				{
+					"name" : "DI[2]",
+					"strict" : false
+				},
+				{
+					"name" : "DI[3]",
+					"strict" : false
+				},
+				{
+					"name" : "DI[4]",
+					"strict" : false
+				},
+				{
+					"name" : "DI[5]",
+					"strict" : false
+				},
+				{
+					"name" : "DI[6]",
+					"strict" : false
+				},
+				{
+					"name" : "DI[7]",
+					"strict" : false
+				},
+				{
+					"name" : "IRQ",
+					"strict" : false
+				},
+				{
+					"name" : "clk",
+					"strict" : false
+				},
+				{
+					"name" : "reset",
+					"strict" : false
+				},
+				{
+					"name" : "NMI",
+					"strict" : false
+				}
+			]
+		}
+	]
+}

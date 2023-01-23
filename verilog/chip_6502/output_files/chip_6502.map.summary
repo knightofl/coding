@@ -1,0 +1,17 @@
+Analysis & Synthesis Status : Successful - Sat Dec 17 18:07:39 2022
+Quartus Prime Version : 22.1std.0 Build 915 10/25/2022 SC Lite Edition
+Revision Name : chip_6502
+Top-level Entity Name : chip_6502
+Family : Cyclone V
+Logic utilization (in ALMs) : N/A
+Total registers : 768
+Total pins : 41
+Total virtual pins : 0
+Total block memory bits : 0
+Total DSP Blocks : 0
+Total HSSI RX PCSs : 0
+Total HSSI PMA RX Deserializers : 0
+Total HSSI TX PCSs : 0
+Total HSSI PMA TX Serializers : 0
+Total PLLs : 0
+Total DLLs : 0
