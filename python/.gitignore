@@ -1,6 +1,5 @@
 __pycache__/
 logs/
-.vscode/
 tmp/
 practice/
 *.csv
@@ -8,5 +7,4 @@ practice/
 *.ipynb
 .pkl
 .empty
-.DS_Store
 
