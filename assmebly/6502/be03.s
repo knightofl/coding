@@ -77,7 +77,35 @@ loop:
         jmp loop
 
 
+wait:
+        pha
+
+        lda #%00000000  ; Set port B to input
+        sta DDRB
+
+busy:
+        lda #RW
+        sta PORTA
+
+        lda #(RW | E)
+        sta PORTA
+
+        lda PORTB
+        and #%10000000
+        bne busy
+
+        lda #RW
+        sta PORTA
+
+        lda #%11111111 ; Set Port B to output
+        sta DDRB
+
+        pla
+        rts
+
+
 lcd:
+        jsr wait
         sta PORTB
 
         lda #0          ; Clear RS/RW/E bits
@@ -93,6 +121,7 @@ lcd:
 
 
 print:
+        jsr wait
         sta PORTB
 
         lda #RS         ; Set RS, clear RW/E bit
