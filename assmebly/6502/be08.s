@@ -23,7 +23,7 @@ reset:
         txs
         cli             ; Clear interrupt disable bit
 
-        lda #$82        ; Set/Clear, CA1
+        lda #$82        ; Set CA1 Negative Edge
         sta IER         ; Interrupt Enable Resgister
         lda #$00
         sta PCR
