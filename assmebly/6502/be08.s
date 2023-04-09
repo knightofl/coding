@@ -21,13 +21,11 @@ RS    = %00100000
 reset:
         ldx #$ff        ; stack initialize
         txs
-        cli             ; Clear interrupt disable bit
 
         lda #$82        ; Set CA1 Negative Edge
         sta IER         ; Interrupt Enable Resgister
         lda #$00
         sta PCR
-
 
         lda #%11111111  ; Set all pins on port B to output
         sta DDRB
@@ -52,7 +50,7 @@ reset:
         lda #0
         sta counter
         sta counter + 1
-
+        cli             ; Clear interrupt disable bit
 loop:
         lda #%00000010  ; Cursor to Home
         jsr lcd
