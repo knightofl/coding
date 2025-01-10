@@ -1,0 +1,5 @@
+(let* ((x 10) (y (+ x 10)))
+  (princ x)
+  (terpri)
+  (princ y)
+  (terpri))
