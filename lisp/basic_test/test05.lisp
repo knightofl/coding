@@ -69,7 +69,7 @@
 
 (defparameter *fruit* 'apple)
 (cond ((eq *fruit* 'apple) 'its-an-apple)
-  ((eq *fruit* 'orange) 'its-an-orange))
+      ((eq *fruit* 'orange) 'its-an-orange))
 
 (equal 'apple 'apple)
 (equal (list 1 2 3) (list 1 2 3))
