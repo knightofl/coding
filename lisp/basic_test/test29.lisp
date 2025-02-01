@@ -20,8 +20,8 @@
     (declare (optimize (speed 3) (safety 0) (debug 0)))
     (if (<= n 0)
     acc
-    (fac-tr (- n 1) (* n acc))))(defun fac-tr-opt (n)
-    (fac-tr n 1))
+    (fac-tr-opt (- n 1) (* n acc))))
+
 
 (disassemble 'fac-tr-opt)
 
