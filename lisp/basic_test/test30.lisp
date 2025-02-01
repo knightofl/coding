@@ -8,19 +8,19 @@
 (disassemble 'fibo)
 
 
-(defun fibo-tr (n &optional (acc 0) (prev 1))
+(defun fibo-tr (n &optional (a 0) (b 1))
     (if (= n 0)
-    acc
-    (fibo-tr (- n 1) prev (+ acc prev))))
+    a
+    (fibo-tr (- n 1) b (+ a b))))
 
 (disassemble 'fibo-tr)
 
 
-(defun fibo-tr-opt (n &optional (acc 0) (prev 1))
+(defun fibo-tr-opt (n &optional (a 0) (b 1))
     (declare (optimize (speed 3) (safety 0) (debug 0)))
     (if (= n 0)
-    acc
-    (fibo-tr-opt (- n 1) prev (+ acc prev))))
+    a
+    (fibo-tr-opt (- n 1) b (+ a b))))
 
 (disassemble 'fibo-tr-opt)
 
