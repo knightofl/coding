@@ -1,4 +1,4 @@
-; fibonacci
+;; fibonacci
 
 (defun fibo (n)
     (if (<= n 2)
