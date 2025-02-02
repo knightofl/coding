@@ -7,9 +7,9 @@
 (in-package :game-of-life)
 
 ;; 창 크기와 격자 설정
-(defparameter *cell-size* 10)  ;; 셀 한칸의 크기, 픽셀 단위.
-(defparameter *rows* 50)       ;; 격자의 행수
-(defparameter *cols* 50)       ;; 격자의 열수
+(defparameter *cell-size* 5)  ;; 셀 한칸의 크기, 픽셀 단위.
+(defparameter *rows* 100)       ;; 격자의 행수
+(defparameter *cols* 100)       ;; 격자의 열수
 (defparameter *window-width* (* *cols* *cell-size*))  ;; 창의 너비
 (defparameter *window-height* (* *rows* *cell-size*)) ;; 창의 높이
 
@@ -32,9 +32,14 @@
   (sdl2:render-present *renderer*))
 
 (defun quit-sdl ()
-  (sdl2:destroy-renderer *renderer*)
-  (sdl2:destroy-window *window*)
-  (sdl2:quit))
+  (when *renderer*
+    (sdl2:destroy-renderer *renderer*)
+    (setf *renderer* nil))
+  (when *window*
+    (sdl2:destroy-window *window*)
+    (setf *window* nil))
+  (handler-case (sdl2:quit)
+    (error (e) (format t "Error: ~A~%" e))))
 
 ;; 격자 생성
 (defun make-grid ()
@@ -51,8 +56,8 @@
           for dy in '(-1  0  1 -1  1 -1  0  1)
           do (let ((nx (+ x dx))
                    (ny (+ y dy)))
-                (when (and (>= nx 0) (< nx *rows*)
-                           (>= ny 0) (< ny *cols*))
+                (when (and (<= 0 nx (- *rows* 1))
+                           (<= 0 ny (- *cols* 1)))
                     (incf count (aref grid nx ny)))))
     count))
 
@@ -91,7 +96,8 @@
        do (progn
             (draw-grid grid)
             (setf grid (next-generation grid))
-            (sdl2:delay 100))))
+            (sdl2:delay 50))))
+    (sdl2:delay 5000)       
     (quit-sdl))
 
 (run-life 1000)
