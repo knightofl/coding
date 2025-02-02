@@ -32,14 +32,22 @@
   (sdl2:render-present *renderer*))
 
 (defun quit-sdl ()
-  (when *renderer*  (sdl2:destroy-renderer *renderer*)
-                    (setf *renderer* nil))
-  (when *window*    (sdl2:destroy-window *window*)
-                    (setf *window* nil))
-  (sdl2:quit)
-  (format t "Sdl2 Quit. *renderer*: ~A, *window*: ~A~%" *renderer* *window*)
-  (format t "SDL2 Quit. Remaining Subsystems:~A~%" (sdl2:was-init))
-  (sb-ext:gc :full t))
+  (handler-case
+    (progn
+      (sdl2:pump-events)
+      (when *renderer*  (sdl2:destroy-renderer *renderer*)
+                        (setf *renderer* nil))
+      (when *window*    (sdl2:destroy-window *window*)
+                        (setf *window* nil))
+      (sdl2:pump-events)
+      ;(sdl2:flush-event :quit)
+      (sdl2:quit)
+      ;(loop while (sdl2:was-init)
+      ;      do (sdl2:quit))
+      (format t "Sdl2 Quit. *renderer*: ~A, *window*: ~A~%" *renderer* *window*)
+      (format t "SDL2 Quit. Remaining Subsystems:~A~%" (sdl2:was-init))
+      (sb-ext:gc :full t))
+    (error (e) (format t "SDL2 Quit Error: ~A~%" e))))
 
 ;; 격자 생성
 (defun make-grid ()
