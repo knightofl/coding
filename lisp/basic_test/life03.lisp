@@ -83,8 +83,8 @@
               do (when (= (aref grid i j) 1)
                 (let ((rect (sdl2:make-rect (* j *cell-size*)
                                             (* i *cell-size*)
-                                            *cell-size*
-                                            *cell-size*)))
+                                                 *cell-size*
+                                                 *cell-size*)))
                   (sdl2:render-fill-rect *renderer* rect)))))
   (sdl2:render-present *renderer*))
 

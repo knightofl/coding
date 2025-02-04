@@ -56,32 +56,13 @@
     (loop for y from 0 below *grid-height* do
       (when (aref *grid* x y)
         (sdl2:render-fill-rect renderer
-                               (sdl2:make-rect (* x *cell-size*) (* y *cell-size*)
-                                               *cell-size* *cell-size*)))))
+                               (sdl2:make-rect (* x *cell-size*)
+                                               (* y *cell-size*)
+                                                    *cell-size*
+                                                    *cell-size*)))))
   (sdl2:render-present renderer))
 
 ;; 메인 루프
-(defun main ()
-  (sdl2:with-init (:video)
-    (sdl2:with-window (win :title "Conway's Game of Life" :w *width* :h *height*)
-      (sdl2:with-renderer (renderer win)
-        (initialize-grid)
-        (sdl2:with-event-loop (:method :poll)
-          (:quit () t)
-          (:keydown (:keysym keysym)
-            (cond
-              ((sdl2:scancode= (sdl2:scancode-value keysym) :scancode-space)
-               (setf *paused* (not *paused*))) ; 스페이스바로 일시 정지/재개
-              ((sdl2:scancode= (sdl2:scancode-value keysym) :scancode-r)
-               (initialize-grid)) ; R 키로 격자 재설정
-              ((sdl2:scancode= (sdl2:scancode-value keysym) :scancode-escape)
-               (sdl2:push-event :quit)))) ; ESC 키로 종료
-          (:idle ()
-            (unless *paused*
-              (next-generation))
-            (render-grid renderer)
-            (sdl2:delay *delay*)))))))
-
 (defun run-life ()
   (sdl2:with-init (:video)
     (sdl2:with-window (win :title "Conway's Game of Life" :w *width* :h *height*)
@@ -104,4 +85,5 @@
             (sdl2:delay *delay*))))))
   (sb-ext:gc :full t))
 
+;; 게임 실행
 (run-life)
