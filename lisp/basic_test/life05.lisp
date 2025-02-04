@@ -78,44 +78,55 @@
               for char = (char line x) do
           (setf (aref *grid* x y) (char= char #\#)))))))
 
-;; 마우스 이벤트 처리
+
+
+
+
+;; 마우스 이벤트 처리 함수 수정
 (defun handle-mouse-event (event)
-  (when (sdl2:mouse-button-p event)
-    (let* ((x (sdl2:mouse-button-x event))
-           (y (sdl2:mouse-button-y event))
-           (grid-x (floor x *cell-size*))
-           (grid-y (floor y *cell-size*)))
-      (when (and (>= grid-x 0) (< grid-x *grid-width*)
-                 (>= grid-y 0) (< grid-y *grid-height*))
-        (case (sdl2:mouse-button-button event)
-          (:left (setf (aref *grid* grid-x grid-y) (not (aref *grid* grid-x grid-y))))
-          (:right (save-pattern *pattern-file*)))))))
+(let ((event-type (sdl2:get-event-type event)))
+(when (or (eql event-type :mousebuttondown)
+(eql event-type :mousebuttonup))
+(let* ((x (sdl2:mouse-button-x event))
+(y (sdl2:mouse-button-y event))
+(grid-x (floor x *cell-size*))
+(grid-y (floor y *cell-size*)))
+(when (and (>= grid-x 0) (< grid-x *grid-width*)
+(>= grid-y 0) (< grid-y *grid-height*))
+(case (sdl2:mouse-button-button event)
+(:left (setf (aref *grid* grid-x grid-y)
+(not (aref *grid* grid-x grid-y))))
+(:right (save-pattern *pattern-file*))))))))
 
-;; 메인 루프
-(defun main ()
-  (sdl2:with-init (:video)
-    (sdl2:with-window (win :title "Game of Life" :w *width* :h *height*)
-      (sdl2:with-renderer (renderer win)
-        (initialize-grid t)
-        (sdl2:with-event-loop (:method :poll)
-          (:quit () t)
-          (:keydown (:keysym keysym)
-            (cond
-              ((sdl2:scancode= (sdl2:scancode-value keysym) :scancode-space)
-               (setf *paused* (not *paused*)))
-              ((sdl2:scancode= (sdl2:scancode-value keysym) :scancode-r)
-               (initialize-grid t))
-              ((sdl2:scancode= (sdl2:scancode-value keysym) :scancode-l)
-               (load-pattern *pattern-file*))
-              ((sdl2:scancode= (sdl2:scancode-value keysym) :scancode-escape)
-               (sdl2:push-event :quit))))
-          (:mousebuttondown (event)
-            (handle-mouse-event event))
-          (:idle ()
-            (unless *paused*
-              (next-generation))
-            (render-grid renderer)
-            (sdl2:delay 50)))))))
+;; 메인 이벤트 루프 수정
+(defun run-life ()
+(sdl2:with-init (:video)
+(sdl2:with-window (win :title "Game of Life" :w *width* :h *height*)
+(sdl2:with-renderer (renderer win)
+(initialize-grid t)
+(sdl2:with-event-loop (:method :poll)
+(:quit () t)
+(:keydown (:keysym keysym)
+(cond
+((sdl2:scancode= (sdl2:scancode-value keysym) :scancode-space)
+(setf *paused* (not *paused*)))
+((sdl2:scancode= (sdl2:scancode-value keysym) :scancode-r)
+(initialize-grid t))
+((sdl2:scancode= (sdl2:scancode-value keysym) :scancode-l)
+(load-pattern *pattern-file*))
+((sdl2:scancode= (sdl2:scancode-value keysym) :scancode-escape)
+(sdl2:push-event :quit))))
 
-;; 실행
-(main)
+;; 마우스 이벤트 처리 추가
+(:mousebuttondown (event)
+(handle-mouse-event event))
+(:mousebuttonup (event)
+(handle-mouse-event event))
+
+(:idle ()
+(unless *paused*
+(next-generation))
+(render-grid renderer)
+(sdl2:delay 50)))))))
+
+(run-life)
