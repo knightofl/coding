@@ -7,21 +7,21 @@
 (in-package :game-of-life)
 
 ;; 창 크기와 격자 설정
-(defparameter *width* 800)
-(defparameter *height* 600)
-(defparameter *cell-size* 5)
-(defparameter *grid-width* (/ *width* *cell-size*))
-(defparameter *grid-height* (/ *height* *cell-size*))
-(defparameter *grid* (make-array (list *grid-width* *grid-height*) :initial-element nil))
+(defparameter *cell-size* 4)  ; 셀 한칸의 크기, 픽셀 단위.
+(defparameter *rows* 200)     ; 격자의 행수
+(defparameter *cols* 300)     ; 격자의 열수
+(defparameter *window-width* (* *cols* *cell-size*))  ;; 창의 너비
+(defparameter *window-height* (* *rows* *cell-size*)) ;; 창의 높이
+(defparameter *grid* (make-array (list *cols* *rows*) :initial-element nil))
 (defparameter *running* nil)
 (defparameter *paused* nil)
 (defparameter *delay* 50)
 
 ;; 랜덤으로 격자 채우기
 (defun initialize-grid ()
-  (loop for x from 0 below *grid-width* do
-    (loop for y from 0 below *grid-height* do
-      (setf (aref *grid* x y) (if (< (random 1.0) 0.2) t nil)))))
+  (loop for x from 0 below *cols* do
+    (loop for y from 0 below *rows* do
+      (setf (aref *grid* x y) (if (< (random 2) 1) t nil)))))
 
 ;; 이웃 셀의 수 계산
 (defun count-neighbors (x y)
@@ -29,17 +29,17 @@
     (loop for dx from -1 to 1 do
       (loop for dy from -1 to 1 do
         (unless (and (= dx 0) (= dy 0))
-          (let ((nx (mod (+ x dx) *grid-width*)) ; 경계 래핑
-                (ny (mod (+ y dy) *grid-height*)))
+          (let ((nx (mod (+ x dx) *cols*)) ; 경계 래핑
+                (ny (mod (+ y dy) *rows*)))
             (when (aref *grid* nx ny)
               (incf count))))))
     count))
 
 ;; 다음 상태 계산
 (defun next-generation ()
-  (let ((new-grid (make-array (list *grid-width* *grid-height*) :initial-element nil)))
-    (loop for x from 0 below *grid-width* do
-      (loop for y from 0 below *grid-height* do
+  (let ((new-grid (make-array (list *cols* *rows*) :initial-element nil)))
+    (loop for x from 0 below *cols* do
+      (loop for y from 0 below *rows* do
         (let ((neighbors (count-neighbors x y)))
           (setf (aref new-grid x y)
                 (if (aref *grid* x y)
@@ -52,8 +52,8 @@
   (sdl2:set-render-draw-color renderer 0 0 0 255) ; 배경 검정색
   (sdl2:render-clear renderer)
   (sdl2:set-render-draw-color renderer 0 255 0 255) ; 셀 녹색
-  (loop for x from 0 below *grid-width* do
-    (loop for y from 0 below *grid-height* do
+  (loop for x from 0 below *cols* do
+    (loop for y from 0 below *rows* do
       (when (aref *grid* x y)
         (sdl2:render-fill-rect renderer
                                (sdl2:make-rect (* x *cell-size*)
@@ -65,7 +65,7 @@
 ;; 메인 루프
 (defun run-life ()
   (sdl2:with-init (:video)
-    (sdl2:with-window (win :title "Conway's Game of Life" :w *width* :h *height*)
+    (sdl2:with-window (win :title "Conway's Game of Life" :w *window-width* :h *window-height*)
       (sdl2:with-renderer (renderer win)
         (initialize-grid)
         (sdl2:with-event-loop (:method :poll)
