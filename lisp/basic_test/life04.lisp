@@ -15,13 +15,14 @@
 (defparameter *grid* (make-array (list *cols* *rows*) :initial-element nil))
 (defparameter *running* nil)
 (defparameter *paused* nil)
+(defparameter *random* 0.1)
 (defparameter *delay* 50)
 
 ;; 랜덤으로 격자 채우기
 (defun initialize-grid ()
   (loop for x from 0 below *cols* do
     (loop for y from 0 below *rows* do
-      (setf (aref *grid* x y) (if (< (random 2) 1) t nil)))))
+      (setf (aref *grid* x y) (if (< (random 1.0) *random*) t nil)))))
 
 ;; 이웃 셀의 수 계산
 (defun count-neighbors (x y)
