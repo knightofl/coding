@@ -31,7 +31,7 @@
              (color (if (= iter *max-iterations*)
                         0
                         (floor (* 255 (/ iter *max-iterations*))))))
-        (sdl2:set-render-draw-color renderer color color color 255)
+        (sdl2:set-render-draw-color renderer 0 color 0 color)
         (sdl2:render-draw-point renderer x y))))
   (sdl2:render-present renderer))
 
