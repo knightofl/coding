@@ -8,8 +8,8 @@
 
 ;; 창 크기와 격자 설정
 (defparameter *cell-size* 5)  ; 셀 한칸의 크기, 픽셀 단위.
-(defparameter *rows* 150)       ; 격자의 행수
-(defparameter *cols* 150)       ; 격자의 열수
+(defparameter *rows* 100)       ; 격자의 행수
+(defparameter *cols* 100)       ; 격자의 열수
 (defparameter *window-width* (* *cols* *cell-size*))  ;; 창의 너비
 (defparameter *window-height* (* *rows* *cell-size*)) ;; 창의 높이
 (defparameter *grid* (make-array (list *cols* *rows*) :initial-element nil))

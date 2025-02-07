@@ -7,9 +7,9 @@
 (in-package :game-of-life)
 
 ;; 창 크기와 격자 설정
-(defparameter *cell-size* 10)  ; 셀 한칸의 크기, 픽셀 단위.
-(defparameter *rows* 50)       ; 화면에 표시되는 행수
-(defparameter *cols* 50)       ; 화면에 표시되는 열수
+(defparameter *cell-size* 5)  ; 셀 한칸의 크기, 픽셀 단위.
+(defparameter *rows* 100)       ; 화면에 표시되는 행수
+(defparameter *cols* 100)       ; 화면에 표시되는 열수
 (defparameter *window-width* (* *cols* *cell-size*))  ;; 창의 너비
 (defparameter *window-height* (* *rows* *cell-size*)) ;; 창의 높이
 (defparameter *buffer-rows* (* *rows* 3)) ; 계산 영역의 행수 (화면의 3배)
