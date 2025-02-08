@@ -12,8 +12,9 @@
 (defparameter *cols* 100)       ; 화면에 표시되는 열수
 (defparameter *window-width* (* *cols* *cell-size*))  ;; 창의 너비
 (defparameter *window-height* (* *rows* *cell-size*)) ;; 창의 높이
-(defparameter *buffer-rows* (+ *rows* 4)) ; 표시 영역 + 2줄 * 2 (위아래)
-(defparameter *buffer-cols* (+ *cols* 4)) ; 표시 영역 + 2줄 * 2 (좌우)
+(defparameter *buffer-padding* 2) ; 주변으로 추가할 줄 수 (2줄)
+(defparameter *buffer-rows* (+ *rows* (* 2 *buffer-padding*))) ; 표시 영역 + 2줄 * 2 (위아래)
+(defparameter *buffer-cols* (+ *cols* (* 2 *buffer-padding*))) ; 표시 영역 + 2줄 * 2 (좌우)
 (defparameter *grid* (make-array (list *buffer-cols* *buffer-rows*) :initial-element nil)) ; 더 넓은 계산 영역
 (defparameter *running* nil)
 (defparameter *paused* t)  ; 초기 상태는 일시 정지
@@ -82,6 +83,23 @@
     (when (and (< grid-x *buffer-cols*) (< grid-y *buffer-rows*))
       (setf (aref *grid* grid-x grid-y) (not (aref *grid* grid-x grid-y))))))
 
+;; 격자 상태를 파일로 저장
+(defun save-grid-to-file (filename)
+  (with-open-file (stream filename :direction :output :if-exists :supersede)
+    (loop for y from 0 below *buffer-rows* do
+      (loop for x from 0 below *buffer-cols* do
+        (write-char (if (aref *grid* x y) #\1 #\0) stream))
+      (write-char #\newline stream))))
+
+;; 파일에서 격자 상태 읽기
+(defun load-grid-from-file (filename)
+  (with-open-file (stream filename :direction :input)
+    (loop for y from 0 below *buffer-rows* do
+      (loop for x from 0 below *buffer-cols* do
+        (let ((char (read-char stream)))
+          (setf (aref *grid* x y) (if (char= char #\1) t nil))))
+      (read-char stream)))) ; 줄바꿈 문자 소비
+
 ;; 메인 루프
 (defun run-life ()
   (sdl2:with-init (:video)
@@ -102,7 +120,7 @@
                 (15         (load-grid-from-file "grid.txt")        ; L 키로 격자 불러오기
                             (format t "Grid loaded from grid.txt~%"))
                 (41         (sdl2:push-event :quit))                ; ESC 키로 종료
-                (otherwise  (format t "Unknown key~%")))))          ; 알 수 없는 키 입력
+                (otherwise  (format t "Unknown key pressed: ~a~%" scancode))))) ; 알 수 없는 키 입력
           (:mousebuttondown (:button button :x x :y y)
             (when (= button 1) ; 왼쪽 마우스 버튼
               (toggle-cell x y)))
