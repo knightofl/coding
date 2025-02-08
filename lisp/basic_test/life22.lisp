@@ -36,12 +36,9 @@
     (loop for dx from -1 to 1 do
       (loop for dy from -1 to 1 do
         (unless (and (= dx 0) (= dy 0))
-          (let ((nx (+ x dx))
-                (ny (+ y dy)))
-            ;; 경계를 넘어가는 셀은 무시
-            (when (and (>= nx 0) (< nx *cols*)
-                       (>= ny 0) (< ny *rows*)
-                       (aref *grid* nx ny))
+          (let ((nx (mod (+ x dx) *cols*)) ; 경계 래핑
+                (ny (mod (+ y dy) *rows*)))
+            (when (aref *grid* nx ny)
               (incf count))))))
     count))
 
@@ -96,7 +93,7 @@
           (setf (aref *grid* x y) (if (char= char #\1) t nil))))
       (read-char stream)))) ; 줄바꿈 문자 소비
 
-;; 메인 루프
+;; 메인 루프 (case 구문)
 (defun run-life ()
   (sdl2:with-init (:video)
     (sdl2:with-window (win :title "Conway's Game of Life" :w *window-width* :h *window-height*)
@@ -104,22 +101,19 @@
         (initialize-grid)
         (sdl2:with-event-loop (:method :poll)
           (:quit () t)
-          (:keydown (:keysym keysym)
-            (cond
-              ((sdl2:scancode= (sdl2:scancode-value keysym) :scancode-space)
-               (setf *paused* (not *paused*))) ; 스페이스바로 일시 정지/재개
-              ((sdl2:scancode= (sdl2:scancode-value keysym) :scancode-c)
-               (initialize-grid)) ; C 키로 격자 재설정
-              ((sdl2:scancode= (sdl2:scancode-value keysym) :scancode-r)
-               (randomize-grid)) ; R 키로 랜덤격자 생성
-              ((sdl2:scancode= (sdl2:scancode-value keysym) :scancode-s)
-               (save-grid-to-file "grid.txt") ; S 키로 격자 저장
-               (format t "Grid saved to grid.txt~%"))
-              ((sdl2:scancode= (sdl2:scancode-value keysym) :scancode-l)
-               (load-grid-from-file "grid.txt") ; L 키로 격자 불러오기
-               (format t "Grid loaded from grid.txt~%"))
-              ((sdl2:scancode= (sdl2:scancode-value keysym) :scancode-escape)
-               (sdl2:push-event :quit)))) ; ESC 키로 종료
+          (:keydown (:keysym keysym) ; keysym 변수 사용
+            (let ((scancode (sdl2:scancode-value keysym))) ; 스캔 코드 추출
+              (format t "Key pressed: ~a~%" scancode) ; 눌린 키의 스캔 코드 출력
+              (case scancode
+                (44         (setf *paused* (not *paused*)))         ; 스페이스바로 일시 정지/재개
+                (6          (initialize-grid))                      ; C 키로 격자 재설정
+                (21         (randomize-grid))                       ; R 키로 랜덤격자 생성
+                (22         (save-grid-to-file "grid.txt")          ; S 키로 격자 저장
+                            (format t "Grid saved to grid.txt~%"))
+                (15         (load-grid-from-file "grid.txt")        ; L 키로 격자 불러오기
+                            (format t "Grid loaded from grid.txt~%"))
+                (41         (sdl2:push-event :quit))                ; ESC 키로 종료
+                (otherwise  (format t "Unknown key~%")))))          ; 알 수 없는 키
           (:mousebuttondown (:button button :x x :y y)
             (when (= button 1) ; 왼쪽 마우스 버튼
               (toggle-cell x y)))
