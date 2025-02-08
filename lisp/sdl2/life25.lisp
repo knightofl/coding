@@ -115,6 +115,8 @@
                 (44         (setf *paused* (not *paused*)))         ; 스페이스바로 일시 정지/재개
                 (6          (initialize-grid))                      ; C 키로 격자 재설정
                 (21         (randomize-grid))                       ; R 키로 랜덤격자 생성
+                (82         (incf *delay* 10))                      ; ↑ 키로 딜레이 증가 
+                (81         (when (> *delay* 10) (decf *delay* 10))); ↓ 키로 딜레이 감소  
                 (22         (save-grid-to-file "grid.txt")          ; S 키로 격자 저장
                             (format t "Grid saved to grid.txt~%"))
                 (15         (load-grid-from-file "grid.txt")        ; L 키로 격자 불러오기
