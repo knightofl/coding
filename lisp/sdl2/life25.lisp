@@ -122,13 +122,12 @@
                 (15         (load-grid-from-file "grid.txt")        ; L 키로 격자 불러오기
                             (format t "Grid loaded from grid.txt~%"))
                 (41         (sdl2:push-event :quit))                ; ESC 키로 종료
-                (otherwise  (format t "Unknown key pressed: ~a~%" scancode))))) ; 알 수 없는 키 입력
+                (otherwise  (format t "Unknown key pressed~%")))))  ; 알 수 없는 키 입력
           (:mousebuttondown (:button button :x x :y y)
             (when (= button 1) ; 왼쪽 마우스 버튼
               (toggle-cell x y)))
           (:idle ()
-            (unless *paused*
-              (next-generation))
+            (unless *paused* (next-generation))
             (render-grid renderer)
             (sdl2:delay *delay*))))))
   (sb-ext:gc :full t))
