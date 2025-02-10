@@ -5,9 +5,12 @@
     true-expr
     false-expr)
 
-(defmacro if-let (binding true-ecpr false-expr)
+(defmacro if-let (binding true-expr false-expr)
     `(let (,binding)
         (if ,(car binding) ,true-expr ,false-expr)))
 
 (if-swapped condition false-expr true-expr)
 (if condition true-expr false-expr)
+
+(defmacro if-swapped (condition false-expr true-expr)
+    `(if ,condition ,true-expr ,false-expr))
