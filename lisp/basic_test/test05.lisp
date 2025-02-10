@@ -59,7 +59,7 @@
 (or (oddp 2) (evenp 2))
 
 (defparameter *is-it-even* nil)
-(or (oddp 4) (setf *is-it-even* t)
+(or (oddp 4) (setf *is-it-even* t))
 
 (member 3 '(1 2 3 4 5))
 
