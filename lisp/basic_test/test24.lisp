@@ -9,4 +9,4 @@
         (first exprs)
         `(if ,(first exprs)
              ,(first exprs)
-        (my-and ,@(rest exprs)))))
+              (my-and ,@(rest exprs)))))
