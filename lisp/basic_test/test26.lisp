@@ -10,6 +10,11 @@
 (defun foo (&optional a b c d &rest e)
   (list a b c d e))
 
+(defun foo (a &rest params)
+  (list a params))
+
+(foo 1 2 3)
+
 (defun foo (&key a b c)
   (list a b c))
 
