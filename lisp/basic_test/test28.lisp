@@ -5,6 +5,10 @@
              ((> ,var ,sym-to))
              ,@body)))
 
-(for (i 0 10) (princ i))
+(defmacro for2 ((var from to) &rest body)
+    `(do ((,var ,from (1+ ,var))
+          (limit ,to))
+         ((>= ,var limit))
+         ,@body))
 
-(for (limit 0 10) (princ limit))
+(for (i 0 10) (princ i))
