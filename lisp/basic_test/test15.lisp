@@ -7,7 +7,7 @@
     (let ((sum  0))
         (dotimes (i n)
             (format t "~D." i)
-            (setf sum (+ sum (read-number))))
+            (setf sum (+ sum (read-number)))) ; (incf sum (read-number))
         (format t "The sum is ~D~%" sum)
         sum))
 
