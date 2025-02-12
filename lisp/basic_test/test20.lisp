@@ -1,12 +1,6 @@
-;(defun foo (x) 12)
-(defmacro foo (x) 12)
-(format t "~D~%" (foo x))
+(defun sum-list (l)
+    (let ((sum 0))
+        (dolist (v l sum)
+            (setf sum (+ sum v)))))
 
-(defun plusf (a b) (+ a b))
-(format t "~D~%" (plusf 1 2))
-
-(defun plusfb (a b) `(+ ,a ,b))
-(format t "~S~%" (plusfb 1 2))
-
-(defmacro plusfm (a b) `(+ ,a ,b))
-(format t "~S~%" (macroexpand-1 '(plusfm 1 2)))
+(format t "~D~%" (sum-list '(2 3 4 5)))

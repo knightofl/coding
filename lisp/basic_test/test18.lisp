@@ -1,18 +1,12 @@
-(defun exprq (x)
-    (+ 2 (* 3 x)))
+(defun read-number ()
+  (format t "Enter a number: ")
+  (finish-output)
+  (parse-integer (read-line)))
 
-;(princ (exprq 4))
+(defun read-and-sum (n)
+  (let ((sum 0))
+    (do ((i 0 (1+ i))) ((= i n) sum)
+      (incf sum (read-number)))
+    (format t "The sum is ~D.~%" sum)))
 
-(defun exprc (x)
-    (cons '+ (cons 2 (cons (cons '* (cons 3 (cons x nil))) nil))))
-
-(format t "~S = ~D~%" (exprc 4) (exprq 4))
-
-(defun exprl (x)
-    (list '+ 2 (list '* 3 x)))
-
-(format t "~S = ~D~%" (exprl 4) (exprq 4))
-
-(defun exprb (x)
-    `(+ 2 (* 3 ,x))) ; backquote
-(format t "~S = ~D~%" (exprb 4) (exprq 4))
+(read-and-sum 3)

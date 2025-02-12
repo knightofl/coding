@@ -1,6 +1,12 @@
-(defun sum-list (l)
-    (let ((sum 0))
-        (dolist (v l sum)
-            (setf sum (+ sum v)))))
+(defun read-number ()
+  (format t "Enter a number: ")
+  (finish-output)
+  (parse-integer (read-line)))
 
-(format t "~D~%" (sum-list '(2 3 4 5)))
+(defun read-and-sum (n)
+  (let ((sum 0))
+    (dotimes (i n)
+      (incf sum (read-number)))
+    (format t "The sum is ~D.~%" sum)))
+
+(read-and-sum 3)
