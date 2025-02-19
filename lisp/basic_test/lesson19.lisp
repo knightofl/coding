@@ -22,24 +22,24 @@
 
 (loop for i below 10
     do (loop for v in '(a b c d e)
-           do (format t "~%~A ~A" i v)))
+        do (format t "~%~A ~A" i v)))
 
 (loop for i below 10
     collect (loop for v in '(a b c d e)
-           collect (cons i v)))
+    collect (cons i v)))
 
 (loop for i below 10
     nconcing (loop for v in '(a b c d e)
-           collect (cons i v)))
+    collect (cons i v)))
 
 (loop for i from 20
-    for v in '(a b c d e)
-    collect (cons i v))
+      for v in '(a b c d e)
+          collect (cons i v))
 
 (loop for i from 20
-    for v in '(a b c d e)
-    collect (cons i v)
-    do (print i))
+      for v in '(a b c d e)
+          collect (cons i v)
+          do (print i))
 
 (loop for (a b) in '((a 1) (b 2) (c 3))
     collect (cons a b))
