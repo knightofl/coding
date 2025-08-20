@@ -44,6 +44,7 @@ const symbol1 = Symbol('id');
 const symbol2 = Symbol('id');
 console.log(`symbol1 value: ${symbol1.description}, type: ${typeof symbol1}`);
 console.log(`symbol2 value: ${symbol2.description}, type: ${typeof symbol2}`);
+console.log(symbol1 == symbol2);
 console.log(symbol1 === symbol2);
 
 const gSymbol1 = Symbol.for('id');
@@ -54,6 +55,7 @@ console.log(
 console.log(
   `gSymbol2 value: ${gSymbol2.description}, type: ${typeof gSymbol2}`
 );
+console.log(gSymbol1 == gSymbol2);
 console.log(gSymbol1 === gSymbol2);
 
 const knightofl = { name: 'lee', age: 50 };
