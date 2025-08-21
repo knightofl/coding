@@ -29,19 +29,19 @@ function showMessage2(message, from) {
 }
 showMessage2('Hi!');
 
-function printAll(...args) {
+function printAll1(...args) {
   for (let i = 0; i < args.length; i++) {
     console.log(args[i]);
   }
 }
-printAll('dreams', 'come', 'true');
+printAll1('dreams', 'come', 'true');
 
-function printAll(...args) {
+function printAll2(...args) {
   for (const arg of args) {
     console.log(arg);
   }
 }
-printAll('dreams', 'come', 'true');
+printAll2('dreams', 'come', 'true');
 
 let names = ['Paul McCartney', 'John Lennon', 'George Harrison', 'Ringo Starr'];
 
