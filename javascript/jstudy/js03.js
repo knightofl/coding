@@ -19,10 +19,10 @@ const knightofl = { name: 'programmer' };
 changeName(knightofl);
 console.log(knightofl);
 
-function showMessage(message, from) {
+function showMessage1(message, from) {
   console.log(`${message} by ${from}`);
 }
-showMessage('Hi!');
+showMessage1('Hi!');
 
 function showMessage2(message, from) {
   console.log(`${message} by ${(from = 'unknown')}`);
